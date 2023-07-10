@@ -11,6 +11,23 @@ export default {
     ],
 
     theme: {
+        container: {
+            screens: {
+                sm: "540px",
+                md: "720px",
+                lg: "960px",
+                xl: "1140px",
+                "2xl": "1320px",
+            },
+            padding: {
+                DEFAULT: "1rem",
+                sm: "1rem",
+                lg: "1rem",
+                xl: "1rem",
+                "2xl": "3rem",
+            },
+            center: true,
+        },
         extend: {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
@@ -35,6 +52,9 @@ export default {
                     600: "#535252",
                     700: "#2F2E2E",
                 },
+            },
+            boxShadow: {
+                hover: "0px 12px 16px 0px rgba(0, 0, 0, 0.30)",
             },
         },
     },
