@@ -63,7 +63,7 @@ const submit = () => {
                             class="mt-1 block w-full"
                             v-model="form.username"
                             required
-                            autocomplete="username"
+                            autocomplete="off"
                         />
 
                         <InputError
@@ -115,28 +115,6 @@ const submit = () => {
                         />
                     </div>
 
-                    <!-- <div class="mt-4">
-                        <InputLabel
-                            isRequired="true"
-                            for="password_confirmation"
-                            value="Confirm Password"
-                        />
-
-                        <TextInput
-                            placeholder=""
-                            id="password_confirmation"
-                            type="password"
-                            class="mt-1 block w-full"
-                            v-model="form.password_confirmation"
-                            required
-                            autocomplete="new-password"
-                        />
-
-                        <InputError
-                            class="mt-2"
-                            :message="form.errors.password_confirmation"
-                        />
-                    </div> -->
                     <p class="mt-4 text-xs">
                         Anda menyetujui
                         <Link href="/" class="text-primary font-medium"
