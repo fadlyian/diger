@@ -11,12 +11,11 @@ const form = useForm({
     username: "",
     email: "",
     password: "",
-    // password_confirmation: "",
 });
 
 const submit = () => {
     form.post(route("register"), {
-        onFinish: () => form.reset("password", "password_confirmation"),
+        onFinish: () => form.reset("password"),
     });
 };
 </script>
@@ -26,7 +25,7 @@ const submit = () => {
         <Head title="Register" />
 
         <div class="grid grid-cols-5 gap-14 items-center">
-            <div class="col-span-2">
+            <div class="col-span-2 ps-[4rem]">
                 <h1
                     class="text-[32px] leading-normal font-medium text-center mb-10"
                 >
@@ -117,15 +116,21 @@ const submit = () => {
 
                     <p class="mt-4 text-xs">
                         Anda menyetujui
-                        <Link href="/" class="text-primary font-medium"
+                        <Link
+                            href="/term-of-service"
+                            class="text-primary font-medium"
                             >Ketentuan Penggunaan</Link
                         >
                         serta
-                        <Link href="/" class="text-primary font-medium"
+                        <Link
+                            href="/privacy-policy"
+                            class="text-primary font-medium"
                             >Kebijakan Privasi</Link
                         >
                         dan
-                        <Link href="/" class="text-primary font-medium"
+                        <Link
+                            href="/our-payment"
+                            class="text-primary font-medium"
                             >Biaya kami</Link
                         >
                     </p>
@@ -160,16 +165,16 @@ const submit = () => {
                         <div
                             class="flex justify-between font-normal mt-10 text-xs"
                         >
-                            <button
+                            <div
                                 class="border-2 border-white py-2 px-4 rounded-full"
                             >
                                 100% Produk asli langsung dari Kreator
-                            </button>
-                            <button
+                            </div>
+                            <div
                                 class="border-2 border-white py-2 px-4 rounded-full"
                             >
                                 Bisa Ditambah nih fiturrrr
-                            </button>
+                            </div>
                         </div>
                     </div>
                 </div>

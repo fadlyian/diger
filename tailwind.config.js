@@ -13,18 +13,17 @@ export default {
     theme: {
         container: {
             screens: {
-                sm: "540px",
-                md: "720px",
-                lg: "960px",
-                xl: "1140px",
-                "2xl": "1320px",
+                sm: "618px",
+                md: "744px",
+                lg: "1000px",
+                xl: "1256px",
+                "2xl": "1522px",
             },
             padding: {
                 DEFAULT: "1rem",
                 sm: "1rem",
                 lg: "1rem",
                 xl: "1rem",
-                "2xl": "3rem",
             },
             center: true,
         },

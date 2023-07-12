@@ -38,7 +38,7 @@ const submit = () => {
         </div>
 
         <div class="grid grid-cols-5 gap-14 items-center">
-            <div class="col-span-2">
+            <div class="col-span-2 ps-[4rem]">
                 <h1
                     class="text-[32px] leading-normal font-medium text-center mb-10"
                 >
@@ -102,36 +102,6 @@ const submit = () => {
                             >Buat Akun</Link
                         >
                     </p>
-
-                    <!-- <div class="block mt-4">
-                        <label class="flex items-center">
-                            <Checkbox
-                                name="remember"
-                                v-model:checked="form.remember"
-                            />
-                            <span class="ml-2 text-sm text-gray-600"
-                                >Remember me</span
-                            >
-                        </label>
-                    </div>
-    
-                    <div class="flex items-center justify-end mt-4">
-                        <Link
-                            v-if="canResetPassword"
-                            :href="route('password.request')"
-                            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Forgot your password?
-                        </Link>
-    
-                        <PrimaryButton
-                            class="ml-4"
-                            :class="{ 'opacity-25': form.processing }"
-                            :disabled="form.processing"
-                        >
-                            Log in
-                        </PrimaryButton>
-                    </div> -->
                 </form>
             </div>
             <div class="col-span-3">
@@ -150,16 +120,16 @@ const submit = () => {
                         <div
                             class="flex justify-between font-normal mt-10 text-xs"
                         >
-                            <button
+                            <div
                                 class="border-2 border-white py-2 px-4 rounded-full"
                             >
                                 100% Produk asli langsung dari Kreator
-                            </button>
-                            <button
+                            </div>
+                            <div
                                 class="border-2 border-white py-2 px-4 rounded-full"
                             >
                                 Bisa Ditambah nih fiturrrr
-                            </button>
+                            </div>
                         </div>
                     </div>
                 </div>
