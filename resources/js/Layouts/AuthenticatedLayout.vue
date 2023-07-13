@@ -6,17 +6,19 @@ import Footer from "@/Components/Footer.vue";
 <template>
     <div>
         <div class="min-h-screen bg-white">
-            <Navbar />
+            <div class="fixed top-0 w-full">
+                <Navbar />
 
-            <!-- Page Heading -->
-            <header
-                class="bg-white border-b border-gray-100"
-                v-if="$slots.header"
-            >
-                <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
-                    <slot name="header" />
-                </div>
-            </header>
+                <!-- Page Heading -->
+                <header
+                    class="bg-white border-b border-gray-100"
+                    v-if="$slots.header"
+                >
+                    <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
+                        <slot name="header" />
+                    </div>
+                </header>
+            </div>
 
             <!-- Page Content -->
             <main>
@@ -27,3 +29,20 @@ import Footer from "@/Components/Footer.vue";
         </div>
     </div>
 </template>
+
+<style>
+::-webkit-scrollbar {
+    max-width: 0.625rem;
+}
+::-webkit-scrollbar-track {
+    background: #80808060;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        134deg,
+        #feb20e 0%,
+        rgba(254, 178, 14, 0.5) 100%
+    );
+    border-radius: 50px;
+}
+</style>
