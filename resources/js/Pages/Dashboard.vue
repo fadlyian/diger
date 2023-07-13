@@ -19,25 +19,31 @@
             <div class="container">
                 <!-- Banner -->
                 <div id="banner">
-                    <img
-                        src="/assets/banner1.png"
-                        class="h-full w-full object-cover"
-                        alt=""
-                    />
-                    <!-- <img
-                        v-for="value in banner"
-                        :key="value"
-                        :src="value"
-                        alt=""
-                    /> -->
+                    <Carousel v-bind="settings">
+                        <Slide v-for="value in banner" :key="value">
+                            <div class="banner_image">
+                                <img
+                                    :src="value"
+                                    class="w-full h-full object-cover"
+                                    alt=""
+                                />
+                            </div>
+                        </Slide>
+
+                        <template #addons>
+                            <Pagination />
+                            <Navigation />
+                        </template>
+                    </Carousel>
                 </div>
+
                 <!-- End Banner -->
 
                 <!-- product -->
                 <section id="product">
-                    <div class="flex gap-5">
+                    <div class="grid grid-cols-5 gap-5">
                         <div
-                            class="box box_orange py-7 px-8 flex flex-col justify-between my-2"
+                            class="box_orange py-7 px-8 flex flex-col justify-between my-2 col-span-1"
                         >
                             <h1 class="text-4xl text-white font-bold">
                                 Trend Digital Product
@@ -46,53 +52,68 @@
                                 disini nanti ada desain
                             </p>
                         </div>
-                        <div
-                            class="flex gap-3 flex-nowrap overflow-x-scroll noscroll"
-                        >
-                            <div
-                                v-for="(value, index) in product"
-                                :key="index"
-                                class="my-2 mx-1"
+                        <div class="col-span-4">
+                            <Carousel
+                                v-bind="settings_product"
+                                :breakpoints="breakpoints"
                             >
-                                <Link href="#">
-                                    <div class="box p-3">
-                                        <img
-                                            :src="value.image"
-                                            class="w-full h-56 rounded-2xl object-cover"
-                                            alt=""
-                                        />
-                                        <h1
-                                            class="mt-3 mb-2 font-semibold text-xl"
-                                        >
-                                            {{ value.name }}
-                                        </h1>
-                                        <div class="flex gap-2 items-center">
-                                            <img
-                                                src="/assets/product.png"
-                                                class="h-6 w-6 rounded-full object-cover"
-                                                alt=""
-                                            />
-                                            <p class="font-semibold">
-                                                {{ value.seller }}
-                                            </p>
-                                        </div>
-                                        <h1 class="my-2 font-semibold text-xl">
-                                            Rp{{ value.price }}
-                                        </h1>
-                                        <div class="flex gap-2 items-center">
-                                            <img
-                                                src="/assets/icon/star.svg"
-                                                class="h-6 w-6"
-                                                alt=""
-                                            />
-                                            <p class="text-sm">
-                                                {{ value.rating }} | Terjual
-                                                {{ value.sold }}
-                                            </p>
-                                        </div>
+                                <Slide
+                                    v-for="(value, index) in product"
+                                    :key="index"
+                                >
+                                    <div class="my-2 mx-2.5">
+                                        <Link href="#">
+                                            <div class="box p-3">
+                                                <img
+                                                    :src="value.image"
+                                                    class="w-full h-56 rounded-2xl object-cover"
+                                                    alt=""
+                                                />
+                                                <h1
+                                                    class="mt-3 mb-2 font-semibold text-xl"
+                                                >
+                                                    {{ value.name }}
+                                                </h1>
+                                                <div
+                                                    class="flex gap-2 items-center"
+                                                >
+                                                    <img
+                                                        src="/assets/product.png"
+                                                        class="h-6 w-6 rounded-full object-cover"
+                                                        alt=""
+                                                    />
+                                                    <p class="font-semibold">
+                                                        {{ value.seller }}
+                                                    </p>
+                                                </div>
+                                                <h1
+                                                    class="my-2 font-semibold text-xl"
+                                                >
+                                                    Rp{{ value.price }}
+                                                </h1>
+                                                <div
+                                                    class="flex gap-2 items-center"
+                                                >
+                                                    <img
+                                                        src="/assets/icon/star.svg"
+                                                        class="h-6 w-6"
+                                                        alt=""
+                                                    />
+                                                    <p class="text-sm">
+                                                        {{ value.rating }} |
+                                                        Terjual
+                                                        {{ value.sold }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </Link>
                                     </div>
-                                </Link>
-                            </div>
+                                </Slide>
+
+                                <template #addons>
+                                    <Navigation />
+                                </template>
+                            </Carousel>
                         </div>
                     </div>
                 </section>
@@ -233,12 +254,28 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link } from "@inertiajs/vue3";
 import { ref } from "vue";
+import { Carousel, Navigation, Pagination, Slide } from "vue3-carousel";
+
+import "vue3-carousel/dist/carousel.css";
 
 const banner = [
     "/assets/banner1.png",
     "/assets/banner2.png",
     "/assets/banner3.png",
 ];
+
+const settings = ref({
+    itemsToShow: 1,
+    wrapAround: true,
+    autoplay: 5000,
+});
+const settings_product = ref({
+    itemsToShow: 3.5,
+    wrapAround: true,
+    autoplay: 5000,
+    snapAlign: "start",
+    mouseDrag: true,
+});
 
 const product = ref([
     {
@@ -325,8 +362,8 @@ const product = ref([
 </script>
 
 <style scoped>
-#banner {
-    margin: 1.8rem 0;
+.banner_image {
+    margin: 1.8rem 0 0;
     border-radius: 1.25rem;
     height: 18.75rem;
     width: 100%;
@@ -336,13 +373,15 @@ const product = ref([
 }
 
 /* product slider */
-#product .box {
-    width: 15.5rem;
+#product {
+    margin-top: 1.8rem;
 }
-.box {
+.box,
+.box_orange {
     border-radius: 1.25rem;
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
     height: 25rem;
+    text-align: start;
 }
 .box_orange {
     background: linear-gradient(
@@ -383,4 +422,47 @@ const product = ref([
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
 }
 /* end slogan */
+</style>
+
+<style>
+/* carousel */
+.carousel__pagination-button::after {
+    width: 0.5rem !important;
+    height: 0.5rem !important;
+    border-radius: 100% !important;
+}
+.carousel__pagination-button--active::after {
+    background-color: #feb20e !important;
+}
+#banner .carousel__next,
+#product .carousel__next,
+#product .carousel__prev,
+#banner .carousel__prev {
+    background: white !important;
+    color: var(--yellow) !important;
+    border-radius: 100px !important;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+#product .carousel__prev,
+#banner .carousel__prev {
+    left: -1.625rem !important;
+}
+#product .carousel__next,
+#banner .carousel__next {
+    right: -1.625rem !important;
+}
+
+@media only screen and (min-width: 1200px) {
+    #banner .carousel__next,
+    #banner .carousel__prev {
+        visibility: hidden !important;
+    }
+
+    #banner:hover .carousel__next,
+    #banner:hover .carousel__prev {
+        visibility: visible !important;
+    }
+}
+/* end carousel */
 </style>

@@ -6,7 +6,7 @@ import Footer from "@/Components/Footer.vue";
 <template>
     <div>
         <div class="min-h-screen bg-white">
-            <div class="fixed top-0 w-full">
+            <div class="fixed top-0 w-full z-10">
                 <Navbar />
 
                 <!-- Page Heading -->
