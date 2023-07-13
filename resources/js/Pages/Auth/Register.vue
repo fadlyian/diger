@@ -25,7 +25,7 @@ const submit = () => {
         <Head title="Register" />
 
         <div class="grid grid-cols-5 gap-14 items-center">
-            <div class="col-span-2 ps-[4rem]">
+            <div class="col-span-2 height_scroll">
                 <h1
                     class="text-[32px] leading-normal font-medium text-center mb-10"
                 >
@@ -118,19 +118,19 @@ const submit = () => {
                         Anda menyetujui
                         <Link
                             href="/term-of-service"
-                            class="text-primary font-medium"
+                            class="text-primary font-medium hover:underline"
                             >Ketentuan Penggunaan</Link
                         >
                         serta
                         <Link
                             href="/privacy-policy"
-                            class="text-primary font-medium"
+                            class="text-primary font-medium hover:underline"
                             >Kebijakan Privasi</Link
                         >
                         dan
                         <Link
                             href="/our-payment"
-                            class="text-primary font-medium"
+                            class="text-primary font-medium hover:underline"
                             >Biaya kami</Link
                         >
                     </p>
@@ -143,13 +143,15 @@ const submit = () => {
                     </button>
                     <p class="mt-3 text-sm">
                         Sudah memiliki akun?
-                        <Link href="/login" class="text-primary font-medium"
+                        <Link
+                            href="/login"
+                            class="text-primary font-medium hover:underline"
                             >Masuk</Link
                         >
                     </p>
                 </form>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-3 banner_img">
                 <div class="mask_img1">
                     <img src="/assets/auth-banner.png" alt="" />
                     <div class="content text-center text-white font-medium">
@@ -184,12 +186,29 @@ const submit = () => {
 </template>
 
 <style scoped>
+.banner_img {
+    height: 100vh;
+    overflow: hidden;
+    padding: 1rem 0;
+}
+.height_scroll {
+    overflow-y: scroll;
+    height: 100vh;
+    padding: 6rem 0;
+    padding-left: 4rem;
+    padding-right: 0.25rem;
+}
+.height_scroll::-webkit-scrollbar {
+    display: none;
+}
+
 .mask_img1 {
     -webkit-mask-image: url("/assets/mask.png");
     mask-image: url("/assets/mask.png");
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     width: 100%;
+    height: 100%;
     border-radius: 2rem;
     overflow: hidden !important;
     position: relative;

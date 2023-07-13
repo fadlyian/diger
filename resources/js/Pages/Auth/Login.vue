@@ -38,7 +38,7 @@ const submit = () => {
         </div>
 
         <div class="grid grid-cols-5 gap-14 items-center">
-            <div class="col-span-2 ps-[4rem]">
+            <div class="col-span-2 ps-[4rem] height_scroll">
                 <h1
                     class="text-[32px] leading-normal font-medium text-center mb-10"
                 >
@@ -98,13 +98,15 @@ const submit = () => {
                     </button>
                     <p class="mt-3 text-sm">
                         Belum memiliki akun?
-                        <Link href="/register" class="text-primary font-medium"
+                        <Link
+                            href="/register"
+                            class="text-primary font-medium hover:underline"
                             >Buat Akun</Link
                         >
                     </p>
                 </form>
             </div>
-            <div class="col-span-3">
+            <div class="col-span-3 banner_img">
                 <div class="mask_img1">
                     <img src="/assets/auth-banner.png" alt="" />
                     <div class="content text-center text-white font-medium">
@@ -139,12 +141,30 @@ const submit = () => {
 </template>
 
 <style scoped>
+.banner_img {
+    height: 100vh;
+    overflow: hidden;
+    padding: 1rem 0;
+}
+.height_scroll {
+    overflow-y: scroll;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 4rem;
+    padding-right: 0.25rem;
+}
+.height_scroll::-webkit-scrollbar {
+    display: none;
+}
 .mask_img1 {
     -webkit-mask-image: url("/assets/mask.png");
     mask-image: url("/assets/mask.png");
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     width: 100%;
+    height: 100%;
     border-radius: 2rem;
     overflow: hidden !important;
     position: relative;
