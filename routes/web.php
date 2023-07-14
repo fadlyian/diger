@@ -25,6 +25,23 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/product', function () {
+    return Inertia::render('Product', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
+
+Route::get('/product/{id}', function () {
+    return Inertia::render('DetailProduct');
+})->name('product.detail');
+
+Route::get('/cart', function () {
+    return Inertia::render('Cart');
+})->middleware(['auth', 'verified'])->name('cart');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
