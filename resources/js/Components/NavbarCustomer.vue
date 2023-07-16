@@ -1,15 +1,17 @@
 <template>
-    <nav class="bg-white border-b border-gray-100">
+    <nav class="bg-white border-b border-gray-100 h-16 flex items-center">
         <!-- Primary Navigation Menu -->
         <div class="container">
-            <div class="flex items-center h-16 relative">
+            <div class="relative">
                 <!-- Logo -->
-                <Link :href="route('home')">
-                    <ApplicationLogo />
-                </Link>
+                <div class="absolute left-0 -top-2">
+                    <Link :href="route('home')">
+                        <ApplicationLogo />
+                    </Link>
+                </div>
 
                 <!-- Navigation Links -->
-                <div class="text-center flex gap-8 items-center mx-auto">
+                <div class="mx-auto flex gap-8 justify-center">
                     <Link
                         v-for="link in links"
                         :key="link.route"
@@ -22,7 +24,7 @@
                 </div>
 
                 <!-- Button Authentication -->
-                <div class="absolute right-0">
+                <div class="absolute right-0 top-0">
                     <div v-if="props.canLogin">
                         <Link
                             :href="route('dashboard')"
