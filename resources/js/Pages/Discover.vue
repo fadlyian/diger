@@ -227,7 +227,14 @@
                 <!-- end product by category -->
 
                 <!-- slogan -->
-                <Slogan />
+                <section class="mt-10 mb-16">
+                    <Slogan>
+                        <template #content>
+                            Bersama Digi, siapa pun dapat memperoleh uang secara
+                            online.
+                        </template>
+                    </Slogan>
+                </section>
                 <!-- end slogan -->
             </div>
         </div>
