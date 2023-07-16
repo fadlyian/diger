@@ -1,5 +1,5 @@
 <template>
-    <nav class="bg-white border-b border-gray-100 fixed top-0 w-full">
+    <nav class="bg-white border-b border-gray-100">
         <!-- Primary Navigation Menu -->
         <div class="container">
             <div class="flex items-center h-16 relative">

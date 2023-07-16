@@ -227,23 +227,7 @@
                 <!-- end product by category -->
 
                 <!-- slogan -->
-                <section id="slogan">
-                    <div class="box_slogan py-5">
-                        <h1
-                            class="text-center text-white text-[1.75rem] font-bold w-3/5 mx-auto"
-                        >
-                            Bersama Digi, siapa pun dapat memperoleh uang secara
-                            online.
-                        </h1>
-                        <div class="mt-4 text-center">
-                            <Link
-                                :href="route('dashboard')"
-                                class="block w-max mx-auto bg-white text-primary py-2.5 px-14 border border-primary rounded-full font-semibold hover:shadow-lg"
-                                >Mulai Jualan</Link
-                            >
-                        </div>
-                    </div>
-                </section>
+                <Slogan />
                 <!-- end slogan -->
             </div>
         </div>
@@ -253,6 +237,7 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link } from "@inertiajs/vue3";
+import Slogan from "@/Components/Slogan.vue";
 import { ref } from "vue";
 import { Carousel, Navigation, Pagination, Slide } from "vue3-carousel";
 
@@ -409,21 +394,6 @@ const product = ref([
     height: 9.875rem;
 }
 /* end product by category */
-
-/* slogan */
-#slogan {
-    padding: 2.5rem 0;
-}
-.box_slogan {
-    border-radius: 1.25rem;
-    background: linear-gradient(
-        134deg,
-        #feb20e 0%,
-        rgba(254, 178, 14, 0.5) 100%
-    );
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
-}
-/* end slogan */
 </style>
 
 <style>
