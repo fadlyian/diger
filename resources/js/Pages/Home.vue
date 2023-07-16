@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                             <p class="mt-4">
-                                Ini serius, anda dapat menjual apa saja!
+                                Ini serius, Anda dapat menjual apa saja!
                             </p>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                         <h1
                             class="font-semibold text-[2rem] w-2/4 mx-auto mb-4"
                         >
-                            Mencari inspirasi tentang apa yang bisa anda jual?
+                            Mencari inspirasi tentang apa yang bisa Anda jual?
                         </h1>
                         <p class="font-medium text-2xl">
                             Temukan produk dan kreator terlaris di Diger
