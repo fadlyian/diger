@@ -133,13 +133,22 @@
                 <!-- end product by category -->
 
                 <!-- slogan -->
-                <section class="mb-[6.25rem]">
-                    <Slogan>
-                        <template #content>
+                <section class="my-[6.25rem]">
+                    <div class="box_slogan py-12">
+                        <h1
+                            class="text-center text-white text-[2rem] font-semibold w-4/5 mx-auto"
+                        >
                             Bagikan produk digital Anda. <br />
                             Seseorang di luar sana membutuhkannya.
-                        </template>
-                    </Slogan>
+                        </h1>
+                        <div class="mt-4 text-center">
+                            <Link
+                                :href="route('dashboard')"
+                                class="block w-max mx-auto bg-white text-primary py-2.5 px-14 border border-primary rounded-full font-semibold hover:shadow-lg"
+                                >Mulai Jualan</Link
+                            >
+                        </div>
+                    </div>
                 </section>
                 <!-- end slogan -->
             </div>
@@ -151,7 +160,6 @@
 import { Head, Link } from "@inertiajs/vue3";
 import CustomerLayout from "@/Layouts/CustomerLayout.vue";
 import { ref } from "vue";
-import Slogan from "@/Components/Slogan.vue";
 
 const advantages = ref([
     "Jual daftar Top 10 Anda",
@@ -170,4 +178,16 @@ const advantages = ref([
     height: 9.875rem;
 }
 /* end product by category */
+
+/* slogan */
+.box_slogan {
+    border-radius: 1.25rem;
+    background: linear-gradient(
+        134deg,
+        #feb20e 0%,
+        rgba(254, 178, 14, 0.5) 100%
+    );
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.1);
+}
+/* end slogan */
 </style>

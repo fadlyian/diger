@@ -54,6 +54,7 @@ export default {
             },
             boxShadow: {
                 hover: "0px 12px 16px 0px rgba(0, 0, 0, 0.30)",
+                collapse: " 0px 0px 10px 0px rgba(0, 0, 0, 0.10)",
             },
         },
     },
