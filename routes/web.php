@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Product;
@@ -63,9 +64,9 @@ Route::get('/product',[ProductController::class, 'index']);
 // })->name('product.detail');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.detail');
 
-Route::get('/cart', function () {
-    return Inertia::render('Cart');
-})->middleware(['auth', 'verified'])->name('cart');
+// Route::get('/cart', function () {
+//     return Inertia::render('Cart');
+// })->middleware(['auth', 'verified'])->name('cart');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -75,6 +76,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::get('/cart/{id}', [CartController::class, 'addToCart'])->name('addToCart');
 });
 
 require __DIR__.'/auth.php';
