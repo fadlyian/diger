@@ -30,10 +30,10 @@
                                 class="w-full flex flex-col justify-center gap-2.5"
                             >
                                 <p class="font-semibold text-xl">
-                                    {{ product.name }}
+                                    {{ product.product_id }}
                                 </p>
                                 <p class="font-medium">
-                                    {{ product.seller }}
+                                    {{ product.user_id }}
                                 </p>
                                 <p class="font-semibold text-xl">
                                     Rp. {{ product.price }}
@@ -41,9 +41,9 @@
                                 <div class="flex justify-between items-center">
                                     <p class="font-semibold">
                                         Qty:
-                                        <span class="font-medium">{{
+                                        <!-- <span class="font-medium">{{
                                             product.qty
-                                        }}</span>
+                                        }}</span> -->
                                     </p>
                                     <p class="font-medium cursor-pointer">
                                         Hapus
@@ -55,7 +55,7 @@
                             class="p-5 rounded-3xl shadow-md flex justify-between items-center text-xl font-semibold"
                         >
                             <p>Total</p>
-                            <p class="text-primary">{{ totalPrice }}</p>
+                            <!-- <p class="text-primary">{{ totalPrice }}</p> -->
                         </div>
                     </div>
                     <div class="col-span-2">
@@ -85,7 +85,7 @@
 
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head, Link } from "@inertiajs/vue3";
+import { Head, Link, usePage } from "@inertiajs/vue3";
 import { ref, computed } from "vue";
 
 const totalPrice = computed(() => {
@@ -103,39 +103,42 @@ const totalPrice = computed(() => {
     });
 });
 
-const cart = ref([
-    {
-        id: 1,
-        image: "/assets/product.png",
-        name: "How to Paint Watercolor Book 1: Design Paintings from Photos by Daniel Novotny (e-book)",
-        seller: "Arif Saputra",
-        price: "98.000,00",
-        rating: 4.8,
-        category: "Desain",
-        sold: 100,
-        qty: 1,
-    },
-    {
-        id: 2,
-        image: "/assets/product.png",
-        name: "Digital Product",
-        seller: "Arif Saputra",
-        price: "98.000,00",
-        rating: 4.8,
-        category: "Tulisan dan Publikasi",
-        sold: 100,
-        qty: 1,
-    },
-    {
-        id: 3,
-        image: "/assets/product.png",
-        name: "Digital Product",
-        seller: "Arif Saputra",
-        price: "98.000,00",
-        rating: 4.8,
-        category: "Film",
-        sold: 100,
-        qty: 1,
-    },
-]);
+// const cart = ref([
+//     {
+//         id: 1,
+//         image: "/assets/product.png",
+//         name: "How to Paint Watercolor Book 1: Design Paintings from Photos by Daniel Novotny (e-book)",
+//         seller: "Arif Saputra",
+//         price: "98.000,00",
+//         rating: 4.8,
+//         category: "Desain",
+//         sold: 100,
+//         qty: 1,
+//     },
+//     {
+//         id: 2,
+//         image: "/assets/product.png",
+//         name: "Digital Product",
+//         seller: "Arif Saputra",
+//         price: "98.000,00",
+//         rating: 4.8,
+//         category: "Tulisan dan Publikasi",
+//         sold: 100,
+//         qty: 1,
+//     },
+//     {
+//         id: 3,
+//         image: "/assets/product.png",
+//         name: "Digital Product",
+//         seller: "Arif Saputra",
+//         price: "98.000,00",
+//         rating: 4.8,
+//         category: "Film",
+//         sold: 100,
+//         qty: 1,
+//     },
+// ]);
+
+const {props} = usePage();
+const cart = ref(props.products);
 </script>
