@@ -4,7 +4,7 @@ import { Link } from "@inertiajs/vue3";
 </script>
 
 <template>
-    <footer class="container">
+    <footer class="container mt-10">
         <!-- Logo -->
         <div
             class="flex justify-between items-center bg-white border-t border-gray-100 py-3"
