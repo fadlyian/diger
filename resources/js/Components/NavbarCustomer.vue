@@ -68,7 +68,7 @@ const props = defineProps({
 
 const links = ref([
     { route: "home", label: "Home" },
-    { route: "discover", label: "Discover" },
     { route: "pricing", label: "Pricing" },
+    { route: "discover", label: "Discover" },
 ]);
 </script>
