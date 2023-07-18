@@ -1,12 +1,31 @@
 <script setup>
 import Navbar from "@/Components/Navbar.vue";
 import Footer from "@/Components/Footer.vue";
+import { ref, onMounted } from "vue";
+
+const navigationStyle = ref(false);
+const onScroll = (p) => {
+    if (p.currentTarget.scrollY > 20) {
+        navigationStyle.value = true;
+    } else {
+        navigationStyle.value = false;
+    }
+};
+onMounted(() => {
+    window.addEventListener("scroll", onScroll);
+});
 </script>
 
 <template>
     <div>
         <div class="min-h-screen bg-white">
-            <div class="fixed top-0 w-full z-10">
+            <div
+                class="fixed top-0 w-full z-10"
+                :class="{
+                    'shadow-lg duration-300 transition-ease-in-out':
+                        navigationStyle,
+                }"
+            >
                 <Navbar />
 
                 <!-- Page Heading -->

@@ -1,7 +1,7 @@
 <template>
-    <Head title="Home Product" />
+    <Head title="Discover" />
 
-    <AuthenticatedLayout>
+    <CustomerLayout>
         <template #header>
             <div class="flex gap-5 justify-center items-center">
                 <a
@@ -65,7 +65,7 @@
                                         <Link :href="'/product/' + value.id">
                                             <div class="box p-3">
                                                 <img
-                                                    :src="'assets/' + value.image"
+                                                    :src="value.image"
                                                     class="w-full h-56 rounded-2xl object-cover"
                                                     alt=""
                                                 />
@@ -127,7 +127,7 @@
                             <div class="box w-full p-3">
                                 <Link :href="'/product/' + value.id">
                                     <img
-                                        :src="'assets/' + value.image"
+                                        :src="value.image"
                                         class="w-full h-56 rounded-2xl object-cover"
                                         alt=""
                                     />
@@ -238,16 +238,15 @@
                 <!-- end slogan -->
             </div>
         </div>
-    </AuthenticatedLayout>
+    </CustomerLayout>
 </template>
 
 <script setup>
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head, Link, usePage  } from "@inertiajs/vue3";
+import CustomerLayout from "@/Layouts/CustomerLayout.vue";
 import Slogan from "@/Components/Slogan.vue";
+import { Head, Link } from "@inertiajs/vue3";
 import { ref } from "vue";
 import { Carousel, Navigation, Pagination, Slide } from "vue3-carousel";
-// import { usePage } from "@inertiajs/vue3";
 
 import "vue3-carousel/dist/carousel.css";
 
@@ -269,90 +268,88 @@ const settings_product = ref({
     mouseDrag: true,
 });
 
-// const product = ref([
-//     {
-//         id: 1,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Desain",
-//         sold: 100,
-//     },
-//     {
-//         id: 2,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Tulisan dan Publikasi",
-//         sold: 100,
-//     },
-//     {
-//         id: 3,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Film",
-//         sold: 100,
-//     },
-//     {
-//         id: 4,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Software Development",
-//         sold: 100,
-//     },
-//     {
-//         id: 5,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Pendidikan",
-//         sold: 100,
-//     },
-//     {
-//         id: 6,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Musik",
-//         sold: 100,
-//     },
-//     {
-//         id: 7,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Pendidikan",
-//         sold: 100,
-//     },
-//     {
-//         id: 8,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Musik",
-//         sold: 100,
-//     },
-// ]);
-const {props} = usePage();
-const product = ref(props.products);
+const product = ref([
+    {
+        id: 1,
+        image: "/assets/product.png",
+        name: "Digital Product",
+        seller: "Arif Saputra",
+        price: "98.000,00",
+        rating: 4.8,
+        category: "Desain",
+        sold: 100,
+    },
+    {
+        id: 2,
+        image: "/assets/product.png",
+        name: "Digital Product",
+        seller: "Arif Saputra",
+        price: "98.000,00",
+        rating: 4.8,
+        category: "Tulisan dan Publikasi",
+        sold: 100,
+    },
+    {
+        id: 3,
+        image: "/assets/product.png",
+        name: "Digital Product",
+        seller: "Arif Saputra",
+        price: "98.000,00",
+        rating: 4.8,
+        category: "Film",
+        sold: 100,
+    },
+    {
+        id: 4,
+        image: "/assets/product.png",
+        name: "Digital Product",
+        seller: "Arif Saputra",
+        price: "98.000,00",
+        rating: 4.8,
+        category: "Software Development",
+        sold: 100,
+    },
+    {
+        id: 5,
+        image: "/assets/product.png",
+        name: "Digital Product",
+        seller: "Arif Saputra",
+        price: "98.000,00",
+        rating: 4.8,
+        category: "Pendidikan",
+        sold: 100,
+    },
+    {
+        id: 6,
+        image: "/assets/product.png",
+        name: "Digital Product",
+        seller: "Arif Saputra",
+        price: "98.000,00",
+        rating: 4.8,
+        category: "Musik",
+        sold: 100,
+    },
+    {
+        id: 7,
+        image: "/assets/product.png",
+        name: "Digital Product",
+        seller: "Arif Saputra",
+        price: "98.000,00",
+        rating: 4.8,
+        category: "Pendidikan",
+        sold: 100,
+    },
+    {
+        id: 8,
+        image: "/assets/product.png",
+        name: "Digital Product",
+        seller: "Arif Saputra",
+        price: "98.000,00",
+        rating: 4.8,
+        category: "Musik",
+        sold: 100,
+    },
+]);
 </script>
 
 <style scoped>
