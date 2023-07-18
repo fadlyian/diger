@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Product;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,18 +27,23 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/product', function () {
-    return Inertia::render('Product', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// ALL PRODUCT
+// Route::get('/product', function () {
+//     return Inertia::render('Product', [
+//         'products' => Product::all(),
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+Route::get('/product',[ProductController::class, 'index']);
 
-Route::get('/product/{id}', function () {
-    return Inertia::render('DetailProduct');
-})->name('product.detail');
+// DETAIL PRODUCT
+// Route::get('/product/{id}', function () {
+//     return Inertia::render('DetailProduct');
+// })->name('product.detail');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.detail');
 
 Route::get('/cart', function () {
     return Inertia::render('Cart');
