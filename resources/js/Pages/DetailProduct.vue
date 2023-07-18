@@ -50,7 +50,7 @@
                             </p>
                             <div class="text-center">
                                 <Link
-                                    :href="route('cart')"
+                                    :href="route('addToCart', product.id )"
                                     class="block cursor-pointer mx-auto bg-primary w-max text-white py-2.5 px-14 border border-primary rounded-full font-semibold hover:shadow-lg"
                                     >+ Keranjang</Link
                                 >
