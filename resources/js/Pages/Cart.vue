@@ -1,7 +1,7 @@
 <template>
     <Head title="Cart" />
 
-    <AuthenticatedLayout>
+    <CustomerLayout>
         <div class="container">
             <div class="pt-24 px-12">
                 <div class="flex justify-between items-center mb-16">
@@ -80,11 +80,11 @@
                 </div>
             </div>
         </div>
-    </AuthenticatedLayout>
+    </CustomerLayout>
 </template>
 
 <script setup>
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import CustomerLayout from "@/Layouts/CustomerLayout.vue";
 import { Head, Link, usePage } from "@inertiajs/vue3";
 import { ref, computed } from "vue";
 
@@ -139,6 +139,6 @@ const totalPrice = computed(() => {
 //     },
 // ]);
 
-const {props} = usePage();
+const { props } = usePage();
 const cart = ref(props.products);
 </script>

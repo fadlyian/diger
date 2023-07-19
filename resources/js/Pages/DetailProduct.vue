@@ -1,13 +1,13 @@
 <template>
     <Head title="Detail Product" />
 
-    <AuthenticatedLayout>
+    <CustomerLayout>
         <div class="container">
             <div class="pt-24 px-12">
                 <div class="grid grid-cols-5 gap-10">
                     <div class="col-span-2 flex">
                         <img
-                            :src="'/assets/' + product.image "
+                            :src="'/assets/' + product.image"
                             class="w-full h-auto object-cover rounded-3xl"
                             alt=""
                         />
@@ -50,7 +50,7 @@
                             </p>
                             <div class="text-center">
                                 <Link
-                                    :href="route('addToCart', product.id )"
+                                    :href="route('addToCart', product.id)"
                                     class="block cursor-pointer mx-auto bg-primary w-max text-white py-2.5 px-14 border border-primary rounded-full font-semibold hover:shadow-lg"
                                     >+ Keranjang</Link
                                 >
@@ -123,11 +123,11 @@
                 </div>
             </div>
         </div>
-    </AuthenticatedLayout>
+    </CustomerLayout>
 </template>
 
 <script setup>
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import CustomerLayout from "@/Layouts/CustomerLayout.vue";
 import { Head, Link, usePage } from "@inertiajs/vue3";
 import { ref } from "vue";
 
@@ -176,7 +176,7 @@ import { ref } from "vue";
 // <p>This is Book #1 in a 3-part series. By purchasing Book #1 you don&rsquo;t automatically gain access to parts 2 or 3 and will have to purchase them separately.</p>`,
 // });
 
-const {props} = usePage();
+const { props } = usePage();
 const product = ref(props.product);
 </script>
 
