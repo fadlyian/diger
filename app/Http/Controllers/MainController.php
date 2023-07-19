@@ -45,4 +45,11 @@ class MainController extends Controller
             'product' => Product::find($id),
         ]);
     }
+
+    public function allProduct(){
+        return Product::all();
+        return inertia::render('allProduct', [
+            'products' => Product::get(),
+        ]);
+    }
 }
