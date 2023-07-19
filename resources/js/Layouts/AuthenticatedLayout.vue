@@ -5,8 +5,8 @@ import { Link } from "@inertiajs/vue3";
 
 const links = ref([
     { route: "dashboard", image: "/assets/icon/home.svg", label: "Dashboard" },
-    { route: "pesanan", image: "/assets/icon/cart2.svg", label: "Pesanan" },
-    { route: "laporan", image: "/assets/icon/laporan.svg", label: "Laporan" },
+    { route: "produk", image: "/assets/icon/cart2.svg", label: "Produk" },
+    { route: "laporan", image: "/assets/icon/book.svg", label: "Pustaka" },
     {
         route: "pengaturan",
         image: "/assets/icon/setting.svg",
@@ -18,7 +18,7 @@ const links = ref([
 <template>
     <div>
         <div class="min-h-screen bg-white">
-            <div class="flex gap-12">
+            <div class="flex gap-24">
                 <div class="w-80 h-screen border-r border-[#F1F1F1]">
                     <div
                         class="h-24 border-b border-gray-100 flex justify-center items-center"
@@ -68,7 +68,7 @@ const links = ref([
                         <slot name="header" />
                     </header>
                     <!-- Page Content -->
-                    <main class="container">
+                    <main class="mr-24">
                         <slot />
                     </main>
                 </div>
