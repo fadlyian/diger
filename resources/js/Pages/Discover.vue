@@ -356,7 +356,7 @@ const product = ref([
 .banner_image {
     margin: 1.8rem 0 0;
     border-radius: 1.25rem;
-    height: 18.75rem;
+    /* height: 18.75rem; */
     width: 100%;
     background: #fff;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);

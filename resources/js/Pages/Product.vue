@@ -25,7 +25,7 @@
                                 <img
                                     :src="value"
                                     class="w-full h-full object-cover"
-                                    alt=""
+                                    :alt="value"
                                 />
                             </div>
                         </Slide>
@@ -180,27 +180,26 @@
                         Produk Berdasarkan Kategori
                     </h1>
                     <div class="grid grid-cols-2 gap-5">
-                        <div v-for="value in 8" :key="value">
+                        <div v-for="(value, index) in category" :key="index">
                             <Link href="#">
-                                <div
+                                <divproduct.png
                                     class="bg-white rounded-[1.25rem] p-[.62rem] box_category flex gap-6"
                                 >
                                     <img
-                                        src="/assets/product.png"
+                                        :src="'/assets/' + value.image"
                                         class="h-full w-32 rounded-2xl object-cover"
-                                        alt=""
+                                        :alt="value.name"
                                     />
-                                    <div>
+                                    <div class="mt-[3%]">
                                         <h1
                                             class="text-xl font-semibold mb-[.6rem]"
                                         >
-                                            Software Development
+                                            {{ value.name }}
                                         </h1>
                                         <p class="font-medium mb-[.38rem]">
-                                            Lorem ipsum dolor sit amet
-                                            consectetur.
+                                            {{ value.description }}
                                         </p>
-                                        <div
+                                        <!-- <div
                                             class="flex gap-2 items-center mb-1"
                                         >
                                             <img
@@ -219,9 +218,9 @@
                                             <p class="text-sm">
                                                 9813847 Produk Digital
                                             </p>
-                                        </div>
+                                        </div> -->
                                     </div>
-                                </div>
+                                </divproduct.png>
                             </Link>
                         </div>
                     </div>
@@ -355,13 +354,14 @@ const settings_product = ref({
 // ]);
 const { props } = usePage();
 const product = ref(props.products);
+const category = ref(props.categories);
 </script>
 
 <style scoped>
 .banner_image {
     margin: 1.8rem 0 0;
     border-radius: 1.25rem;
-    height: 18.75rem;
+    /* height: 18.75rem; */
     width: 100%;
     background: #fff;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
