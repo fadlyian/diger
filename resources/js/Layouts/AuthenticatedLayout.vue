@@ -8,8 +8,7 @@ const links = ref([
     { route: "produk", image: "/assets/icon/cart2.svg", label: "Produk" },
     { route: "discover", image: "/assets/icon/column.svg", label: "Discover" },
     { route: "pustaka", image: "/assets/icon/book.svg", label: "Pustaka" },
-    { route: "pengaturan", image: "/assets/icon/setting.svg", label: "Pengaturan",
-    },
+    { route: "pengaturan", image: "/assets/icon/setting.svg", label: "Pengaturan"},
 ]);
 </script>
 
