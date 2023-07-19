@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Product;
@@ -19,32 +20,11 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Home', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('home');
-
-Route::get('/discover', function () {
-    return Inertia::render('Discover', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('discover');
-
-Route::get('/pricing', function () {
-    return Inertia::render('Pricing', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('pricing');
+// Halaman Utama
+Route::get('/', [MainController::class ,'index'])->name('home');
+Route::get('/pricing', [MainController::class ,'pricing'])->name('pricing');
+Route::get('/discover',[MainController::class, 'discover'])->name('discover');
+Route::get('/discover/{id}', [MainController::class, 'show'])->name('product.detail');
 
 // ALL PRODUCT
 // Route::get('/product', function () {
@@ -56,17 +36,12 @@ Route::get('/pricing', function () {
 //         'phpVersion' => PHP_VERSION,
 //     ]);
 // });
-Route::get('/product',[ProductController::class, 'index']);
+// Route::get('/product',[ProductController::class, 'index']);
 
 // DETAIL PRODUCT
 // Route::get('/product/{id}', function () {
 //     return Inertia::render('DetailProduct');
 // })->name('product.detail');
-Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.detail');
-
-// Route::get('/cart', function () {
-//     return Inertia::render('Cart');
-// })->middleware(['auth', 'verified'])->name('cart');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -86,8 +61,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    //cart
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/cart/{id}', [CartController::class, 'addToCart'])->name('addToCart');
+
+    // dashboard
+    Route::get('/myProduct', [ProfileController::class, 'myProduct'])->name('myProduct');
 });
 
 require __DIR__.'/auth.php';
