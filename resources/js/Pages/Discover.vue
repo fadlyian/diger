@@ -66,7 +66,7 @@
                                     :key="index"
                                 >
                                     <div class="my-2 mx-2.5">
-                                        <Link :href="'/product/' + value.id">
+                                        <Link :href="route('product.detail', value.id)">
                                             <div class="box p-3">
                                                 <img
                                                     :src="
@@ -276,88 +276,6 @@ const settings_product = ref({
     mouseDrag: true,
 });
 
-// const product = ref([
-//     {
-//         id: 1,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Desain",
-//         sold: 100,
-//     },
-//     {
-//         id: 2,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Tulisan dan Publikasi",
-//         sold: 100,
-//     },
-//     {
-//         id: 3,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Film",
-//         sold: 100,
-//     },
-//     {
-//         id: 4,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Software Development",
-//         sold: 100,
-//     },
-//     {
-//         id: 5,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Pendidikan",
-//         sold: 100,
-//     },
-//     {
-//         id: 6,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Musik",
-//         sold: 100,
-//     },
-//     {
-//         id: 7,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Pendidikan",
-//         sold: 100,
-//     },
-//     {
-//         id: 8,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Musik",
-//         sold: 100,
-//     },
-// ]);
 const { props } = usePage();
 const product = ref(props.products);
 const category = ref(props.categories);
