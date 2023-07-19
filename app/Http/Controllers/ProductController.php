@@ -11,20 +11,22 @@ use Inertia\Inertia;
 
 class ProductController extends Controller
 {
-    public function index(){
-        return Inertia::render('Product', [
-            'products' => Product::all(),
-            'categories' => Category::all(),
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-            'laravelVersion' => Application::VERSION,
-            'phpVersion' => PHP_VERSION,
-        ]);
-    }
+    // public function index(){
+    //     return Inertia::render('Product', [
+    //         'products' => Product::all(),
+    //         'categories' => Category::all(),
+    //         'canLogin' => Route::has('login'),
+    //         'canRegister' => Route::has('register'),
+    //         'laravelVersion' => Application::VERSION,
+    //         'phpVersion' => PHP_VERSION,
+    //     ]);
+    // }
 
-    public function show($id){
-        return Inertia::render('DetailProduct', [
-            'product' => Product::find($id),
-        ]);
-    }
+    // public function show($id){
+    //     return Inertia::render('DetailProduct', [
+    //         'product' => Product::find($id),
+    //     ]);
+    // }
+
+
 }
