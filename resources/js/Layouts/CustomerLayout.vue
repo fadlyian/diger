@@ -62,4 +62,14 @@ onMounted(() => {
     );
     border-radius: 50px;
 }
+@media (max-width: 768px) {
+    html {
+        font-size: 80%;
+    }
+}
+@media (max-width: 576px) {
+    html {
+        font-size: 70%;
+    }
+}
 </style>

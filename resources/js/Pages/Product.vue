@@ -7,15 +7,15 @@
                 <a
                     href="#"
                     class="font-medium hover:text-primary"
-                    v-for="value in product"
+                    v-for="value in category"
                     :key="value.id"
                 >
-                    {{ value.category }}
+                    {{ value.name }}
                 </a>
             </div>
         </template>
 
-        <div class="pt-28 px-12">
+        <div class="pt-[14%] sm:pt-[12%] md:pt-[12%] lg:pt-[6%] m-auto">
             <div class="container">
                 <!-- Banner -->
                 <div id="banner">
@@ -24,7 +24,7 @@
                             <div class="banner_image">
                                 <img
                                     :src="value"
-                                    class="w-full h-full object-cover"
+                                    class="w-[100%] object-cover"
                                     :alt="value"
                                 />
                             </div>
@@ -36,23 +36,27 @@
                         </template>
                     </Carousel>
                 </div>
-
                 <!-- End Banner -->
 
                 <!-- product -->
                 <section id="product">
-                    <div class="grid grid-cols-5 gap-5">
+                    <div
+                        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1"
+                    >
                         <div
-                            class="box_orange py-7 px-8 flex flex-col justify-between my-2 col-span-1"
+                            class="box_orange py-7 px-8 flex flex-col justify-between my-2 col-span-1 overflow-hidden"
                         >
                             <h1 class="text-4xl text-white font-bold">
                                 Trend Digital Product
                             </h1>
-                            <p class="text-white font-bold text-center">
-                                disini nanti ada desain
-                            </p>
+                            <img
+                                src="/assets/chart-iso-premium.png"
+                                alt="Chart"
+                            />
                         </div>
-                        <div class="col-span-4">
+                        <div
+                            class="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4"
+                        >
                             <Carousel
                                 v-bind="settings_product"
                                 :breakpoints="breakpoints"
@@ -91,7 +95,7 @@
                                                 <h1
                                                     class="my-2 font-semibold text-xl"
                                                 >
-                                                    Rp{{ value.price }}
+                                                    Rp {{ value.price }}
                                                 </h1>
                                                 <div
                                                     class="flex gap-2 items-center"
@@ -124,7 +128,9 @@
                 <!-- innovative product -->
                 <section id="innovative">
                     <h1 class="text-3xl font-bold mb-5">Produk Inovatif</h1>
-                    <div class="grid grid-cols-4 gap-5">
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                    >
                         <div v-for="(value, index) in product" :key="index">
                             <div class="box w-full p-3">
                                 <Link :href="'/product/' + value.id">
@@ -147,7 +153,7 @@
                                         </p>
                                     </div>
                                     <h1 class="my-2 font-semibold text-xl">
-                                        Rp{{ value.price }}
+                                        Rp {{ value.price }}
                                     </h1>
                                     <div class="flex gap-2 items-center">
                                         <img
@@ -179,10 +185,10 @@
                     <h1 class="text-3xl font-bold mb-5">
                         Produk Berdasarkan Kategori
                     </h1>
-                    <div class="grid grid-cols-2 gap-5">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
                         <div v-for="(value, index) in category" :key="index">
                             <Link href="#">
-                                <divproduct.png
+                                <div
                                     class="bg-white rounded-[1.25rem] p-[.62rem] box_category flex gap-6"
                                 >
                                     <img
@@ -220,7 +226,7 @@
                                             </p>
                                         </div> -->
                                     </div>
-                                </divproduct.png>
+                                </div>
                             </Link>
                         </div>
                     </div>
@@ -264,7 +270,7 @@ const settings = ref({
     autoplay: 5000,
 });
 const settings_product = ref({
-    itemsToShow: 3.5,
+    itemsToShow: 3.8,
     wrapAround: true,
     snapAlign: "start",
     mouseDrag: true,
@@ -358,6 +364,9 @@ const category = ref(props.categories);
 </script>
 
 <style scoped>
+.container {
+    max-width: 1180px;
+}
 .banner_image {
     margin: 1.8rem 0 0;
     border-radius: 1.25rem;
@@ -377,6 +386,7 @@ const category = ref(props.categories);
     border-radius: 1.25rem;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
     height: 25rem;
+    /* width: 15.625rem; */
     text-align: start;
 }
 .box:hover {
