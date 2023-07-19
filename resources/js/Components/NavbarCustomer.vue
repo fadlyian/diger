@@ -25,12 +25,39 @@
 
                 <!-- Button Authentication -->
                 <div class="absolute right-0 top-0">
-                    <div v-if="props.canLogin">
-                        <Link
-                            :href="route('dashboard')"
-                            class="text-sm font-semibold text-center bg-primary text-white py-1 px-6 rounded-full"
-                            >Dashboard</Link
-                        >
+                    <div v-if="!props.canLogin">
+                        <div class="flex gap-5 items-center">
+                            <Link :href="route('cart')">
+                                <img src="/assets/icon/cart.svg" alt="" />
+                            </Link>
+                            <!-- Settings Dropdown -->
+                            <div class="ml-3 relative">
+                                <Dropdown align="right" width="48">
+                                    <template #trigger>
+                                        <img
+                                            src="/assets/icon/user.svg"
+                                            alt=""
+                                            class="cursor-pointer"
+                                        />
+                                    </template>
+
+                                    <template #content>
+                                        <DropdownLink
+                                            :href="route('dashboard')"
+                                        >
+                                            Dashboard
+                                        </DropdownLink>
+                                        <DropdownLink
+                                            :href="route('logout')"
+                                            method="post"
+                                            as="button"
+                                        >
+                                            Log Out
+                                        </DropdownLink>
+                                    </template>
+                                </Dropdown>
+                            </div>
+                        </div>
                     </div>
                     <div v-else class="flex gap-3">
                         <Link
@@ -54,6 +81,8 @@
 import { ref, defineProps } from "vue";
 import { Link } from "@inertiajs/vue3";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import Dropdown from "@/Components/Dropdown.vue";
+import DropdownLink from "@/Components/DropdownLink.vue";
 
 const props = defineProps({
     canLogin: {

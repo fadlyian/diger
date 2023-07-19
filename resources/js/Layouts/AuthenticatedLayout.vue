@@ -1,54 +1,87 @@
 <script setup>
-import Navbar from "@/Components/Navbar.vue";
-import Footer from "@/Components/Footer.vue";
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
+import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import { Link } from "@inertiajs/vue3";
 
-const navigationStyle = ref(false);
-const onScroll = (p) => {
-    if (p.currentTarget.scrollY > 20) {
-        navigationStyle.value = true;
-    } else {
-        navigationStyle.value = false;
-    }
-};
-onMounted(() => {
-    window.addEventListener("scroll", onScroll);
-});
+const links = ref([
+    { route: "dashboard", image: "/assets/icon/home.svg", label: "Dashboard" },
+    { route: "pesanan", image: "/assets/icon/cart2.svg", label: "Pesanan" },
+    { route: "laporan", image: "/assets/icon/laporan.svg", label: "Laporan" },
+    {
+        route: "pengaturan",
+        image: "/assets/icon/setting.svg",
+        label: "Pengaturan",
+    },
+]);
 </script>
 
 <template>
     <div>
         <div class="min-h-screen bg-white">
-            <div
-                class="fixed top-0 w-full z-10"
-                :class="{
-                    'shadow-lg duration-300 transition-ease-in-out':
-                        navigationStyle,
-                }"
-            >
-                <Navbar />
-
-                <!-- Page Heading -->
-                <header
-                    class="bg-white border-b border-gray-100"
-                    v-if="$slots.header"
-                >
-                    <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
-                        <slot name="header" />
+            <div class="flex gap-12">
+                <div class="w-80 h-screen border-r border-[#F1F1F1]">
+                    <div
+                        class="h-24 border-b border-gray-100 flex justify-center items-center"
+                    >
+                        <Link :href="route('home')">
+                            <ApplicationLogo />
+                        </Link>
                     </div>
-                </header>
+                    <div class="mt-8">
+                        <Link
+                            v-for="link in links"
+                            :href="route(link.route)"
+                            :key="link.route"
+                        >
+                            <div
+                                class="flex gap-4 items-center mx-8 px-9 py-2 rounded-full mb-3"
+                                :class="{
+                                    'bg-primary': route().current(link.route),
+                                }"
+                            >
+                                <img
+                                    :src="link.image"
+                                    class="w-4 h-4"
+                                    :class="{
+                                        'brightness-0 invert': route().current(
+                                            link.route
+                                        ),
+                                    }"
+                                    alt=""
+                                />
+                                <p
+                                    :class="{
+                                        'text-white': route().current(
+                                            link.route
+                                        ),
+                                    }"
+                                    class="font-medium text-lg"
+                                >
+                                    {{ link.label }}
+                                </p>
+                            </div>
+                        </Link>
+                    </div>
+                </div>
+                <div class="mt-12 w-style">
+                    <header v-if="$slots.header">
+                        <slot name="header" />
+                    </header>
+                    <!-- Page Content -->
+                    <main class="container">
+                        <slot />
+                    </main>
+                </div>
             </div>
-
-            <!-- Page Content -->
-            <main>
-                <slot />
-            </main>
-
-            <Footer />
         </div>
     </div>
 </template>
 
+<style scoped>
+.w-style {
+    width: calc(100% - 20rem);
+}
+</style>
 <style>
 ::-webkit-scrollbar {
     max-width: 0.625rem;

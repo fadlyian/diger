@@ -1,7 +1,7 @@
 <template>
     <Head title="Home Product" />
 
-    <AuthenticatedLayout>
+    <CustomerLayout>
         <template #header>
             <div class="flex gap-5 justify-center items-center">
                 <a
@@ -65,7 +65,9 @@
                                         <Link :href="'/product/' + value.id">
                                             <div class="box p-3">
                                                 <img
-                                                    :src="'assets/' + value.image"
+                                                    :src="
+                                                        'assets/' + value.image
+                                                    "
                                                     class="w-full h-56 rounded-2xl object-cover"
                                                     alt=""
                                                 />
@@ -238,12 +240,12 @@
                 <!-- end slogan -->
             </div>
         </div>
-    </AuthenticatedLayout>
+    </CustomerLayout>
 </template>
 
 <script setup>
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head, Link, usePage  } from "@inertiajs/vue3";
+import CustomerLayout from "@/Layouts/CustomerLayout.vue";
+import { Head, Link, usePage } from "@inertiajs/vue3";
 import Slogan from "@/Components/Slogan.vue";
 import { ref } from "vue";
 import { Carousel, Navigation, Pagination, Slide } from "vue3-carousel";
@@ -351,7 +353,7 @@ const settings_product = ref({
 //         sold: 100,
 //     },
 // ]);
-const {props} = usePage();
+const { props } = usePage();
 const product = ref(props.products);
 </script>
 

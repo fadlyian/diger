@@ -71,6 +71,15 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.d
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/pesanan', function () {
+    return Inertia::render('Pesanan');
+})->middleware(['auth', 'verified'])->name('pesanan');
+Route::get('/laporan', function () {
+    return Inertia::render('Laporan');
+})->middleware(['auth', 'verified'])->name('laporan');
+Route::get('/pengaturan', function () {
+    return Inertia::render('Pengaturan');
+})->middleware(['auth', 'verified'])->name('pengaturan');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
