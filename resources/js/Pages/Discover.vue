@@ -15,18 +15,20 @@
             </div>
         </template>
 
-        <div class="pt-[14%] sm:pt-[12%] md:pt-[12%] lg:pt-[6%] m-auto">
+        <div class="pt-[14%] sm:pt-[12%] md:pt-[12%] lg:pt-24 m-auto">
             <div class="container">
                 <!-- Banner -->
                 <div id="banner">
                     <Carousel v-bind="settings">
                         <Slide v-for="value in banner" :key="value">
                             <div class="banner_image">
-                                <img
-                                    :src="value"
-                                    class="w-[100%] object-cover"
-                                    :alt="value"
-                                />
+                                <Link :href="route('dashboard')">
+                                    <img
+                                        :src="value"
+                                        class="w-[100%] object-cover"
+                                        :alt="value"
+                                    />
+                                </Link>
                             </div>
                         </Slide>
 
@@ -66,7 +68,14 @@
                                     :key="index"
                                 >
                                     <div class="my-2 mx-2.5">
-                                        <Link :href="route('product.detail', value.id)">
+                                        <Link
+                                            :href="
+                                                route(
+                                                    'product.detail',
+                                                    value.id
+                                                )
+                                            "
+                                        >
                                             <div class="box p-3">
                                                 <img
                                                     :src="

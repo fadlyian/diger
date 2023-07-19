@@ -72,39 +72,31 @@
                 <!-- end about -->
 
                 <!-- product by category -->
-                <section class="mb-[6.25rem]">
-                    <div class="text-center mb-[1.875rem]">
-                        <h1
-                            class="font-semibold text-[2rem] w-2/4 mx-auto mb-4"
-                        >
-                            Mencari inspirasi tentang apa yang bisa Anda jual?
-                        </h1>
-                        <p class="font-medium text-2xl">
-                            Temukan produk dan kreator terlaris di Diger
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-5">
-                        <div v-for="value in 8" :key="value">
+                <section id="category">
+                    <h1 class="text-3xl font-bold mb-5">
+                        Produk Berdasarkan Kategori
+                    </h1>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div v-for="(value, index) in category" :key="index">
                             <Link href="#">
                                 <div
                                     class="bg-white rounded-[1.25rem] p-[.62rem] box_category flex gap-6"
                                 >
                                     <img
-                                        src="/assets/product.png"
-                                        class="h-[8.625rem] w-32 rounded-2xl object-cover"
-                                        alt=""
+                                        :src="'/assets/' + value.image"
+                                        class="h-full w-32 rounded-2xl object-cover"
+                                        :alt="value.name"
                                     />
-                                    <div>
+                                    <div class="mt-[3%]">
                                         <h1
                                             class="text-xl font-semibold mb-[.6rem]"
                                         >
-                                            Software Development
+                                            {{ value.name }}
                                         </h1>
                                         <p class="font-medium mb-[.38rem]">
-                                            Lorem ipsum dolor sit amet
-                                            consectetur.
+                                            {{ value.description }}
                                         </p>
-                                        <div
+                                        <!-- <div
                                             class="flex gap-2 items-center mb-1"
                                         >
                                             <img
@@ -123,7 +115,7 @@
                                             <p class="text-sm">
                                                 9813847 Produk Digital
                                             </p>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </Link>
@@ -157,7 +149,7 @@
 </template>
 
 <script setup>
-import { Head, Link } from "@inertiajs/vue3";
+import { Head, Link, usePage } from "@inertiajs/vue3";
 import CustomerLayout from "@/Layouts/CustomerLayout.vue";
 import { ref } from "vue";
 
@@ -169,6 +161,8 @@ const advantages = ref([
     "Jual adegan C4D Anda",
     "Jual emoji baru Anda",
 ]);
+const { props } = usePage();
+const category = ref(props.categories);
 </script>
 
 <style scoped>
