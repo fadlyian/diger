@@ -25,8 +25,11 @@
 
                 <!-- Button Authentication -->
                 <div class="absolute right-0 top-0">
-                    <div v-if="!props.canLogin">
-                        <div class="flex gap-5 items-center">
+                    <div v-if="$page.props.auth.user">
+                        <div
+                            v-if="$page.props.auth.user"
+                            class="flex gap-5 items-center"
+                        >
                             <Link :href="route('cart')">
                                 <img src="/assets/icon/cart.svg" alt="" />
                             </Link>
