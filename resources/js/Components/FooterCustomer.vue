@@ -5,8 +5,8 @@
             <Link :href="route('home')">
                 <ApplicationLogo />
             </Link>
-            <div class="grid grid-cols-5 gap-40 justify-between items-center">
-                <div class="col-span-3">
+            <div class="grid md:grid-cols-5 gap-40 justify-between items-center">
+                <div class="md:col-span-4 lg:col-span-3">
                     <p class="my-6 font-semibold text-xl">
                         Jangan sia-siakan kesempatanmu untuk tumbuh dan sukses!
                         Berlanggananlah sekarang dan dapatkan manfaatnya.
@@ -31,8 +31,8 @@
                         dilindungi Undang-Undang.
                     </p>
                 </div>
-                <div class="col-span-2 justify-self-end">
-                    <div class="flex gap-5">
+                <div class="hidden md:block md:col-span-1 lg:col-span-2 justify-self-end">
+                    <div class="flex md:flex-col lg:flex-row gap-5">
                         <a
                             v-for="(value, key) in medsoc"
                             :key="key"
