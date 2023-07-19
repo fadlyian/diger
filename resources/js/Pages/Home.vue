@@ -2,15 +2,20 @@
     <Head title="Home" />
 
     <CustomerLayout>
-        <div class="pt-24 px-12">
+        <div class="pt-[14%] sm:pt-[12%] md:pt-[12%] lg:pt-[6%] mx-auto">
             <div class="container">
                 <!-- banner -->
-                <section class="grid grid-cols-5 gap-8 items-center">
+                <section class="grid md:grid-cols-5 gap-8 items-center">
                     <div class="col-span-3">
+                        <img
+                            src="/assets/banner-home.png"
+                            class="md:hidden w-[200px] object-cover mx-auto my-8"
+                            alt=""
+                        />
                         <h1 class="font-semibold text-5xl leading-[3.875rem]">
                             Rasakan masa depan digital dengan berinovasi.
                         </h1>
-                        <p class="mb-12 mt-14">
+                        <p class="mb-10 mt-8 md:mb-12 md:mt-14">
                             Dengan Diger, siapa pun bisa mendapatkan rupiah
                             pertama secara online. Mulailah dengan apa yang anda
                             ketahui, lihat apa yang berhasil, dan dapatkan
@@ -25,7 +30,7 @@
                     <div class="col-span-2">
                         <img
                             src="/assets/banner-home.png"
-                            class="w-full h-full object-cover"
+                            class="hidden md:block w-full h-full object-cover"
                             alt=""
                         />
                     </div>
@@ -33,22 +38,22 @@
                 <!-- end banner -->
 
                 <!-- about -->
-                <section class="my-[6.25rem]">
+                <section class="my-[3rem] md:my-[6.25rem]">
                     <div class="text-end">
                         <h1 class="font-semibold text-[2rem] mb-5">
                             Jual apa saja
                         </h1>
                     </div>
-                    <div class="grid grid-cols-2 gap-8">
-                        <div class="row-span-1">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="hidden md:block md:row-span-1">
                             <img
                                 src="/assets/about.png"
                                 class="w-full h-[20rem] rounded-[1.25rem] object-cover"
                                 alt=""
                             />
                         </div>
-                        <div class="row-span-1">
-                            <p class="mb-4">
+                        <div class="md:row-span-1">
+                            <p class="mb-2 md:mb-5">
                                 Software. Pelajaran video. Album Lagu. Apa pun!
                                 Diger dibuat untuk membantu Anda bereksperimen
                                 dengan semua jenis ide dan format.
@@ -63,7 +68,7 @@
                                     <p>{{ value }}</p>
                                 </div>
                             </div>
-                            <p class="mt-4">
+                            <p class="mb-2 md:mb-5">
                                 Ini serius, Anda dapat menjual apa saja!
                             </p>
                         </div>
@@ -72,10 +77,15 @@
                 <!-- end about -->
 
                 <!-- product by category -->
-                <section id="category">
-                    <h1 class="text-3xl font-bold mb-5">
-                        Produk Berdasarkan Kategori
-                    </h1>
+                <section class="mb-[6.25rem]">
+                    <div class="text-center mb-[1.875rem]">
+                        <h1 class="font-semibold text-[2rem] mx-auto mb-4">
+                            Mencari inspirasi tentang apa yang bisa Anda jual?
+                        </h1>
+                        <p class="font-medium text-2xl">
+                            Temukan produk dan kreator terlaris di Diger
+                        </p>
+                    </div>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
                         <div v-for="(value, index) in category" :key="index">
                             <Link href="#">
@@ -166,10 +176,14 @@ const category = ref(props.categories);
 </script>
 
 <style scoped>
+.container {
+    max-width: 1180px;
+}
 /* product by category */
 .box_category {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-    height: 9.875rem;
+    min-height: 9.875rem;
+    max-height: fit-content;
 }
 /* end product by category */
 

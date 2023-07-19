@@ -13,6 +13,7 @@ class MainController extends Controller
 {
     public function index(){
         return Inertia::render('Home', [
+            'categories' => Category::all(),
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'categories' => Category::all(),

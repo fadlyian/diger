@@ -2,10 +2,10 @@
     <Head title="Pricing" />
 
     <CustomerLayout>
-        <div class="pt-24 px-12">
+        <div class="pt-[14%] sm:pt-[12%] md:pt-[12%] lg:pt-[6%] mx-auto">
             <div class="container">
                 <!-- banner -->
-                <section class="text-center w-1/2 mx-auto mb-[6.25rem]">
+                <section class="text-center md:w-1/2 mx-auto my-[4rem] md:mb-[6rem] md:mt-[2rem]">
                     <p class="text-[2rem] font-bold">Pricing</p>
                     <h1 class="text-5xl font-bold text-primary my-5">
                         10% rata
@@ -29,7 +29,7 @@
                         kami.
                     </p>
                 </div>
-                <div class="mx-24">
+                <div class="mx-10 md:mx-24">
                     <button
                         v-for="(value, key) in faq"
                         :key="key"
@@ -56,7 +56,7 @@
                 <!-- end faq -->
 
                 <!-- slogan -->
-                <section class="my-[6.25rem]">
+                <section class="my-[4rem] md:my-[6.25rem]">
                     <div class="box_slogan py-12">
                         <h1
                             class="text-center text-white text-[2rem] font-semibold w-4/5 mx-auto"
@@ -115,6 +115,9 @@ const toggleCollapse = (key) => {
 </script>
 
 <style scoped>
+.container {
+    max-width: 1180px;
+}
 .box_slogan {
     border-radius: 1.25rem;
     background: linear-gradient(

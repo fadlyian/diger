@@ -340,7 +340,8 @@ const category = ref(props.categories);
 /* product by category */
 .box_category {
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-    height: 9.875rem;
+    min-height: 9.875rem;
+    max-height: fit-content;
 }
 /* end product by category */
 </style>
