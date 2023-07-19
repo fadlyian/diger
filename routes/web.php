@@ -58,6 +58,19 @@ Route::get('/pengaturan', function () {
     return Inertia::render('Setting');
 })->middleware(['auth', 'verified'])->name('pengaturan');
 
+Route::get('/admin', function () {
+    return Inertia::render('Admin/Beranda');
+})->middleware(['auth', 'verified'])->name('admin.beranda');
+Route::get('/admin/pesanan', function () {
+    return Inertia::render('Admin/Pesanan');
+})->middleware(['auth', 'verified'])->name('admin.pesanan');
+Route::get('/admin/laporan', function () {
+    return Inertia::render('Admin/Laporan');
+})->middleware(['auth', 'verified'])->name('admin.laporan');
+Route::get('/admin/pengaturan', function () {
+    return Inertia::render('Admin/Pengaturan');
+})->middleware(['auth', 'verified'])->name('admin.pengaturan');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
