@@ -74,9 +74,9 @@ Route::get('/dashboard', function () {
 Route::get('/produk', function () {
     return Inertia::render('Produk');
 })->middleware(['auth', 'verified'])->name('produk');
-Route::get('/laporan', function () {
-    return Inertia::render('Laporan');
-})->middleware(['auth', 'verified'])->name('laporan');
+Route::get('/pustaka', function () {
+    return Inertia::render('Pustaka');
+})->middleware(['auth', 'verified'])->name('pustaka');
 Route::get('/pengaturan', function () {
     return Inertia::render('Setting');
 })->middleware(['auth', 'verified'])->name('pengaturan');

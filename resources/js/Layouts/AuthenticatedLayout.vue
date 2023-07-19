@@ -6,7 +6,7 @@ import { Link } from "@inertiajs/vue3";
 const links = ref([
     { route: "dashboard", image: "/assets/icon/home.svg", label: "Dashboard" },
     { route: "produk", image: "/assets/icon/cart2.svg", label: "Produk" },
-    { route: "laporan", image: "/assets/icon/book.svg", label: "Pustaka" },
+    { route: "pustaka", image: "/assets/icon/book.svg", label: "Pustaka" },
     {
         route: "pengaturan",
         image: "/assets/icon/setting.svg",
@@ -19,7 +19,9 @@ const links = ref([
     <div>
         <div class="min-h-screen bg-white">
             <div class="flex gap-24">
-                <div class="w-80 h-screen border-r border-[#F1F1F1]">
+                <div
+                    class="w-80 fixed bg-white h-screen overflow-y-hidden border-r border-[#F1F1F1]"
+                >
                     <div
                         class="h-24 border-b border-gray-100 flex justify-center items-center"
                     >
@@ -63,7 +65,7 @@ const links = ref([
                         </Link>
                     </div>
                 </div>
-                <div class="mt-12 w-style">
+                <div class="pt-12 w-style">
                     <header v-if="$slots.header">
                         <slot name="header" />
                     </header>
@@ -80,6 +82,13 @@ const links = ref([
 <style scoped>
 .w-style {
     width: calc(100% - 20rem);
+    height: 100vh;
+    margin-left: auto;
+    overflow-y: scroll;
+    padding-left: 6rem;
+}
+.w-style::-webkit-scrollbar {
+    display: none;
 }
 </style>
 <style>
