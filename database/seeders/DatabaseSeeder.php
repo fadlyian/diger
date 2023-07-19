@@ -29,6 +29,11 @@ class DatabaseSeeder extends Seeder
             'email' => "admin@gmail.com",
             'password' => Hash::make('password'),
         ]);
+        DB::table('users')->insert([
+            'name' => "ian",
+            'email' => "ian@gmail.com",
+            'password' => Hash::make('password'),
+        ]);
 
         $this->call([
             ProductSeeder::class,
