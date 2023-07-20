@@ -14,7 +14,9 @@ class AdminController extends Controller
     }
 
     public function users(){
-        return User::all();
+        return Inertia::render('Admin/User', [
+            'users' => User::all(),
+        ]);
     }
 
 }
