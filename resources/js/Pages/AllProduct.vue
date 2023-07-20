@@ -15,7 +15,7 @@
             </div>
         </template>
 
-        <div class="pt-[14%] sm:pt-[12%] md:pt-[12%] lg:pt-[6%] m-auto">
+        <div class="pt-[14%] sm:pt-[12%] md:pt-[12%] lg:pt-24 m-auto">
             <div class="container">
                 <!-- product -->
                 <section id="allProduct">
@@ -46,7 +46,7 @@
                                     <h1 class="my-2 font-semibold text-xl">
                                         Rp {{ value.price }}
                                     </h1>
-                                    <div class="flex gap-2 items-center">
+                                    <!-- <div class="flex gap-2 items-center">
                                         <img
                                             src="/assets/icon/star.svg"
                                             class="h-6 w-6"
@@ -56,7 +56,7 @@
                                             {{ value.rating }} | Terjual
                                             {{ value.sold }}
                                         </p>
-                                    </div>
+                                    </div> -->
                                 </Link>
                             </div>
                         </div>
@@ -89,7 +89,7 @@ const category = ref(props.categories);
 .box_orange {
     border-radius: 1.25rem;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-    height: 25rem;
+    height: 23rem;
     /* width: 15.625rem; */
     text-align: start;
 }
