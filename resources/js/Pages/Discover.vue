@@ -158,7 +158,7 @@
                                             alt=""
                                         />
                                         <p class="font-semibold">
-                                            {{ value.seller }}
+                                            {{ value.user.name }}
                                         </p>
                                     </div>
                                     <h1 class="my-2 font-semibold text-xl">
@@ -170,10 +170,10 @@
                                             class="h-6 w-6"
                                             alt=""
                                         />
-                                        <p class="text-sm">
+                                        <!-- <p class="text-sm">
                                             {{ value.rating }} | Terjual
                                             {{ value.sold }}
-                                        </p>
+                                        </p> -->
                                     </div>
                                 </Link>
                             </div>

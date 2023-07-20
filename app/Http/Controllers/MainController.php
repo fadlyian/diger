@@ -33,7 +33,7 @@ class MainController extends Controller
 
     public function discover(){
         return Inertia::render('Discover', [
-            'products' => Product::all(),
+            'products' => Product::with('user')->get(),
             'categories' => Category::all(),
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
