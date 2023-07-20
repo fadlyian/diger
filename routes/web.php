@@ -37,6 +37,9 @@ Route::get('/produk', function () {
     return Inertia::render('Produk');
 })->middleware(['auth'])->name('produk');
 
+// Blog
+Route::get('/terms', [MainController::class, 'Terms'])->name('terms');
+Route::get('/privacy', [MainController::class, 'Privacy'])->name('privacy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

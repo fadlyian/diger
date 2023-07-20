@@ -54,4 +54,12 @@ class MainController extends Controller
             'categories' => Category::all(),
         ]);
     }
+
+    public function terms(){
+        return inertia::render('Blog/Terms');
+    }
+
+    public function privacy(){
+        return inertia::render('Blog/Privacy');
+    }
 }
