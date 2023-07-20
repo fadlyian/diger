@@ -25,13 +25,13 @@
             <slot />
         </main>
 
-        <FooterCustomer />
+        <Footer />
     </div>
 </template>
 
 <script setup>
 import NavbarCustomer from "@/Components/NavbarCustomer.vue";
-import FooterCustomer from "@/Components/FooterCustomer.vue";
+import Footer from "@/Components/Footer.vue";
 import { ref, onMounted } from "vue";
 
 const navigationStyle = ref(false);
