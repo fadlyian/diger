@@ -8,7 +8,11 @@ const links = ref([
     { route: "myProduct", image: "/assets/icon/cart2.svg", label: "My Produk" },
     { route: "discover", image: "/assets/icon/column.svg", label: "Discover" },
     { route: "pustaka", image: "/assets/icon/book.svg", label: "Pustaka" },
-    { route: "pengaturan", image: "/assets/icon/setting.svg", label: "Pengaturan"},
+    {
+        route: "pengaturan",
+        image: "/assets/icon/setting.svg",
+        label: "Pengaturan",
+    },
 ]);
 </script>
 
@@ -60,6 +64,20 @@ const links = ref([
                                 </p>
                             </div>
                         </Link>
+                        <Link :href="route('logout')" method="post">
+                            <div
+                                class="flex gap-4 items-center mx-8 px-9 py-2 rounded-full"
+                            >
+                                <img
+                                    src="/assets/icon/logout.svg"
+                                    class="w-4 h-4 filter_img"
+                                    alt=""
+                                />
+                                <p class="font-medium text-lg text-[#EB4C2B]">
+                                    Logout
+                                </p>
+                            </div>
+                        </Link>
                     </div>
                 </div>
                 <div class="pt-12 w-style">
@@ -103,6 +121,11 @@ const links = ref([
     );
     border-radius: 50px;
 }
+.filter_img {
+    filter: invert(56%) sepia(85%) saturate(5754%) hue-rotate(347deg)
+        brightness(97%) contrast(90%);
+}
+
 @media (max-width: 768px) {
     html {
         font-size: 80%;

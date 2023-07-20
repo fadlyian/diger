@@ -19,11 +19,6 @@ const links = ref([
         image: "/assets/icon/laporan.svg",
         label: "Categories",
     },
-    {
-        route: "admin.pengaturan",
-        image: "/assets/icon/setting.svg",
-        label: "Pengaturan",
-    },
 ]);
 </script>
 
