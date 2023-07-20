@@ -47,25 +47,9 @@
 
 <script setup>
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import { Head, Link } from "@inertiajs/vue3";
+import { Head, Link, usePage } from "@inertiajs/vue3";
 import { ref } from "vue";
 
-const categories = ref([
-    {
-        id: 1,
-        name: "Category 1",
-    },
-    {
-        id: 2,
-        name: "Category 2",
-    },
-    {
-        id: 3,
-        name: "Category 3",
-    },
-    {
-        id: 4,
-        name: "Category 4",
-    },
-]);
+const {props} = usePage();
+const categories = ref(props.categories);
 </script>

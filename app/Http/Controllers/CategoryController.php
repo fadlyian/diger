@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -12,7 +13,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/Categories/index');
+        return Inertia::render('Admin/Categories/index', [
+            'categories' => Category::all(),
+        ]);
     }
 
     /**
@@ -28,7 +31,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request['categories'];
+        Category::create([
+            "name" => $request['categories'],
+        ]);
+        // dd($request);
+        return to_route('admin.categories');
     }
 
     /**

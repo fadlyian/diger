@@ -16,12 +16,12 @@
 
                     <TextInput
                         id="categories"
-                        type="categories"
+                        type="text"
                         class="mt-1 block w-full"
-                        v-model="categories"
+                        v-model="form.categories"
                         required
                         autofocus
-                        autocomplete="categories"
+                        autocomplete="off"
                     />
 
                     <!-- <InputError class="mt-2" :message="errors.categories" /> -->
@@ -46,4 +46,33 @@ import { ref } from "vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 
 const categories = ref("");
+// const { data, setData, post } = useForm({
+    // nama_kategori: categories.value
+// });
+const form = useForm({
+    categories: "",
+});
+
+const submit = () => {
+    form.post(route("store.categories"), {
+        // alert('kategori berhasil ditambahkan');
+        // onFinish: () => form.reset("categories"),
+    });
+
+    // // Submit form dengan method post() dari useForm
+    // post(route('store.categories'), data.value, {
+    //     onSuccess: () => {
+    //         // Akan dijalankan jika request berhasil (response status 200)
+    //         // Contoh: mengarahkan ke halaman lain atau menampilkan notifikasi
+    //         // (Silakan sesuaikan dengan kebutuhan Anda)
+    //         alert('Kategori berhasil ditambahkan!');
+    //         setData('nama_kategori', ''); // Mereset nilai input setelah berhasil ditambahkan
+    //     },
+    //     onError: (errors) => {
+    //         // Akan dijalankan jika terjadi error pada request
+    //         // Misalnya: menampilkan pesan error dari server
+    //         alert('Terjadi kesalahan: ' + errors.nama_kategori);
+    //     },
+    // });
+};
 </script>
