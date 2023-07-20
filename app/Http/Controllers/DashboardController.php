@@ -24,6 +24,6 @@ class DashboardController extends Controller
     }
 
     public function pengaturan(){
-        return Inertia::render('Setting');
+        return Inertia::render('Profile/Edit');
     }
 }

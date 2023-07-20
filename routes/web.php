@@ -11,6 +11,7 @@ use App\Models\Product;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,12 +58,12 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix' => 'admin', 'middleware' => 'roles:admin'], function(){
         route::get('/', [AdminController::class, 'index'])->name('admin.beranda');
         route::get('/user', [AdminController::class, 'users'])->name('admin.users');
-        route::get('/pengaturan', [AdminController::class, 'pengaturan'])->name('admin.pengaturan');
+        route::get('/pengaturan', [DashboardController::class, 'pengaturan'])->name('admin.pengaturan');
 
         //CATEGORIES
         route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
         route::get('/categories/create', [CategoryController::class, 'create'])->name('create.categories');
-        //
+        Route::post('/categories', [CategoryController::class, 'store'])->name('store.categories');
     });
 });
 
