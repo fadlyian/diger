@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
@@ -28,51 +29,35 @@ Route::get('/discover/{id}', [MainController::class, 'show'])->name('product.det
 
 Route::get('/allProduct', [MainController::class, 'AllProduct'])->name('allProduct');
 
-// ALL PRODUCT
-// Route::get('/product', function () {
-//     return Inertia::render('Product', [
-//         'products' => Product::all(),
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-// Route::get('/product',[ProductController::class, 'index']);
-
-// DETAIL PRODUCT
-// Route::get('/product/{id}', function () {
-//     return Inertia::render('DetailProduct');
-// })->name('product.detail');
-
+//user
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 Route::get('/produk', function () {
     return Inertia::render('Produk');
-})->middleware(['auth', 'verified'])->name('produk');
+})->middleware(['auth'])->name('produk');
 Route::get('/pustaka', function () {
     return Inertia::render('Pustaka');
-})->middleware(['auth', 'verified'])->name('pustaka');
+})->middleware(['auth'])->name('pustaka');
 Route::get('/pengaturan', function () {
     return Inertia::render('Setting');
-})->middleware(['auth', 'verified'])->name('pengaturan');
+})->middleware(['auth'])->name('pengaturan');
 
-Route::get('/admin', function () {
-    return Inertia::render('Admin/Beranda');
-})->middleware(['auth', 'verified'])->name('admin.beranda');
-Route::get('/admin/users', function () {
-    return Inertia::render('Admin/Pesanan');
-})->middleware(['auth', 'verified'])->name('admin.users');
-Route::get('/admin/categories', function () {
-    return Inertia::render('Admin/Categories/index');
-})->middleware(['auth', 'verified'])->name('admin.categories');
-Route::get('/admin/categories/create', function () {
-    return Inertia::render('Admin/Categories/CreateEditCategories');
-})->middleware(['auth', 'verified'])->name('create.categories');
-Route::get('/admin/pengaturan', function () {
-    return Inertia::render('Admin/Pengaturan');
-})->middleware(['auth', 'verified'])->name('admin.pengaturan');
+// Route::get('/admin', function () {
+//     return Inertia::render('Admin/Beranda');
+// })->middleware(['auth', 'verified'])->name('admin.beranda');
+// Route::get('/admin/users', function () {
+//     return Inertia::render('Admin/Pesanan');
+// })->middleware(['auth', 'verified'])->name('admin.users');
+// Route::get('/admin/categories', function () {
+//     return Inertia::render('Admin/Categories/index');
+// })->middleware(['auth', 'verified'])->name('admin.categories');
+// Route::get('/admin/categories/create', function () {
+//     return Inertia::render('Admin/Categories/CreateEditCategories');
+// })->middleware(['auth', 'verified'])->name('create.categories');
+// Route::get('/admin/pengaturan', function () {
+//     return Inertia::render('Admin/Pengaturan');
+// })->middleware(['auth', 'verified'])->name('admin.pengaturan');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -85,6 +70,15 @@ Route::middleware('auth')->group(function () {
 
     // dashboard
     Route::get('/myProduct', [ProfileController::class, 'myProduct'])->name('myProduct');
+
+
+    // ADMIN
+    Route::group(['prefix' => 'admin', 'middleware' => 'roles:admin'], function(){
+        route::get('/', [AdminController::class, 'index'])->name('admin');
+        route::get('/user', [AdminController::class, 'users'])->name('admin.users');
+        route::get('/categories', [AdminController::class, 'categories'])->name('admin.categories');
+        route::get('/pengaturan', [AdminController::class, 'pengaturan'])->name('admin.pengaturan');
+    });
 });
 
 require __DIR__.'/auth.php';
