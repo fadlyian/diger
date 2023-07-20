@@ -5,33 +5,23 @@
             <Link :href="route('home')">
                 <ApplicationLogo />
             </Link>
-            <div class="grid md:grid-cols-5 gap-40 justify-between items-center">
+            <div
+                class="grid md:grid-cols-5 gap-40 justify-between items-center"
+            >
                 <div class="md:col-span-4 lg:col-span-3">
                     <p class="my-6 font-semibold text-xl">
                         Jangan sia-siakan kesempatanmu untuk tumbuh dan sukses!
                         Berlanggananlah sekarang dan dapatkan manfaatnya.
                     </p>
-                    <div
-                        class="flex border border-primary rounded-full pl-8 overflow-hidden"
-                    >
-                        <input
-                            type="email"
-                            class="border-0 focus:ring-0 bg-none p-0 w-full"
-                            placeholder="Alamat email mu"
-                        />
-                        <button
-                            type="submit"
-                            class="text-white bg-primary py-3 px-16 rounded-full font-semibold"
-                        >
-                            Berlangganan
-                        </button>
-                    </div>
+
                     <p class="text-sm font-medium text-[#555] mt-12">
                         &#169; {{ new Date().getFullYear() }} Diger. Hak cipta
                         dilindungi Undang-Undang.
                     </p>
                 </div>
-                <div class="hidden md:block md:col-span-1 lg:col-span-2 justify-self-end">
+                <div
+                    class="hidden md:block md:col-span-1 lg:col-span-2 justify-self-end"
+                >
                     <div class="flex md:flex-col lg:flex-row gap-5">
                         <a
                             v-for="(value, key) in medsoc"
