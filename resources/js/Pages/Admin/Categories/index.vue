@@ -9,10 +9,9 @@
             <Link
                 :href="route('create.categories')"
                 class="w-12 text-white text-sm cursor-pointer py-2.5 px-6 rounded-full font-semibold bg-primary hover:shadow-lg"
-                >Tambah Categories</Link
+                >Add Category</Link
             >
-            <h1 class="mt-8 font-medium mb-5">Semua Catergories</h1>
-            <table class="table w-full">
+            <table class="table w-full mt-8">
                 <tr>
                     <th class="text-sm font-medium text-start p-4">No</th>
                     <th class="text-sm font-medium text-start p-4">Category</th>

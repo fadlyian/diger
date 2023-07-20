@@ -3,7 +3,7 @@
 
     <AdminLayout>
         <template #header>
-            <h1 class="text-[2rem] font-bold">Categories</h1>
+            <h1 class="text-[2rem] font-bold">Categories - edit</h1>
         </template>
         <div class="py-12">
             <form @submit.prevent="submit">
@@ -27,37 +27,7 @@
 
                         <!-- <InputError class="mt-2" :message="errors.categories" /> -->
                     </div>
-                    <div class="mb-6">
-                        <InputLabel
-                            for="file"
-                            value="Gambar"
-                            isRequired="true"
-                        />
 
-                        <TextInput
-                            id="file"
-                            type="file"
-                            class="mt-1 hidden w-full"
-                            v-model="form.file"
-                            required
-                            autocomplete="off"
-                            accept="image/*"
-                            @change="onFileChange"
-                        />
-
-                        <label for="file">
-                            <div
-                                class="border w-full border-primary cursor-pointer focus:border-primary px-6 py-3 focus:ring-primary placeholder:text-gray-400 rounded-full shadow-sm"
-                            >
-                                <div class="flex gap-3 items-center">
-                                    <img src="/assets/icon/file.svg" alt="" />
-                                    <p class="text-primary">{{ label }}</p>
-                                </div>
-                            </div>
-                        </label>
-
-                        <!-- <InputError class="mt-2" :message="errors.file" /> -->
-                    </div>
                     <div class="mb-6">
                         <InputLabel
                             for="description"
@@ -81,7 +51,7 @@
                     type="submit"
                     class="block w-max ml-auto text-white cursor-pointer py-2.5 px-14 rounded-full font-semibold bg-primary hover:shadow-lg"
                 >
-                    Tambah
+                    Edit
                 </button>
             </form>
         </div>
@@ -104,19 +74,7 @@ const categories = ref("");
 const form = useForm({
     categories: "",
     description: "",
-    file: null,
 });
-
-const label = ref("Pilih Gambar");
-
-const onFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-        label.value = file.name;
-    } else {
-        label.value = "Pilih Gambar";
-    }
-};
 
 const submit = () => {
     form.post(route("store.categories"), {

@@ -3,7 +3,7 @@
 
     <AdminLayout>
         <template #header>
-            <h1 class="text-[2rem] font-bold">Categories</h1>
+            <h1 class="text-[2rem] font-bold">Categories - add</h1>
         </template>
         <div class="py-12">
             <form @submit.prevent="submit">
@@ -81,7 +81,7 @@
                     type="submit"
                     class="block w-max ml-auto text-white cursor-pointer py-2.5 px-14 rounded-full font-semibold bg-primary hover:shadow-lg"
                 >
-                    Tambah
+                    Add
                 </button>
             </form>
         </div>
