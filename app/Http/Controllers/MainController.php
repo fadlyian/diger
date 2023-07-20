@@ -49,9 +49,9 @@ class MainController extends Controller
     }
 
     public function allProduct(){
-        return Product::all();
-        return inertia::render('allProduct', [
+        return inertia::render('AllProduct', [
             'products' => Product::get(),
+            'categories' => Category::all(),
         ]);
     }
 }

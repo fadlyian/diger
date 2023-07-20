@@ -19,7 +19,9 @@
                         class="font-medium hover:text-primary"
                         :class="{ 'text-primary': route().current(link.route) }"
                     >
-                        {{ link.label }}
+                        <div v-if="currentUrl !== '/allProduct'">
+                            {{ link.label }}
+                        </div>
                     </Link>
                 </div>
 
@@ -103,4 +105,7 @@ const links = ref([
     { route: "pricing", label: "Pricing" },
     { route: "discover", label: "Discover" },
 ]);
+
+const currentUrl = window.location.pathname;
+console.log(currentUrl);
 </script>

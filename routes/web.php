@@ -26,7 +26,7 @@ Route::get('/pricing', [MainController::class ,'pricing'])->name('pricing');
 Route::get('/discover',[MainController::class, 'discover'])->name('discover');
 Route::get('/discover/{id}', [MainController::class, 'show'])->name('product.detail');
 
-Route::get('/allProduct', [MainController::class, 'allProduct'])->name('allProduct');
+Route::get('/allProduct', [MainController::class, 'AllProduct'])->name('allProduct');
 
 // ALL PRODUCT
 // Route::get('/product', function () {
