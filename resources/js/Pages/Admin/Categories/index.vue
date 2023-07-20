@@ -8,7 +8,7 @@
         <div class="py-12">
             <Link
                 :href="route('create.categories')"
-                class="w-12 text-white text-sm cursor-pointer py-2.5 px-12 rounded-full font-semibold bg-primary hover:shadow-lg"
+                class="w-12 text-white text-sm cursor-pointer py-2.5 px-6 rounded-full font-semibold bg-primary hover:shadow-lg"
                 >Tambah Categories</Link
             >
             <h1 class="mt-8 font-medium mb-5">Semua Catergories</h1>
@@ -50,6 +50,6 @@ import AdminLayout from "@/Layouts/AdminLayout.vue";
 import { Head, Link, usePage } from "@inertiajs/vue3";
 import { ref } from "vue";
 
-const {props} = usePage();
+const { props } = usePage();
 const categories = ref(props.categories);
 </script>
