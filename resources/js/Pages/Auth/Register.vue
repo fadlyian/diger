@@ -24,10 +24,10 @@ const submit = () => {
     <GuestLayout>
         <Head title="Register" />
 
-        <div class="grid grid-cols-5 gap-14 items-center">
-            <div class="col-span-2 height_scroll">
+        <div class="mt-[120px] lg:mt-0 lg:grid lg:grid-cols-5 lg:gap-14 items-center min-h-screen">
+            <div class="lg:col-span-2 lg:ps-[4rem] lg:height_scroll">
                 <h1
-                    class="text-[32px] leading-normal font-medium text-center mb-10"
+                    class="text-[28px] md:text-[32px] leading-normal font-medium text-center mb-10"
                 >
                     Buat akunmu
                 </h1>
@@ -95,19 +95,19 @@ const submit = () => {
                     <p class="mt-4 text-xs">
                         Anda menyetujui
                         <Link
-                            href="/term-of-service"
+                            :href="route('terms')"
                             class="text-primary font-medium hover:underline"
                             >Ketentuan Penggunaan</Link
                         >
                         serta
                         <Link
-                            href="/privacy-policy"
+                            :href="route('privacy')"
                             class="text-primary font-medium hover:underline"
                             >Kebijakan Privasi</Link
                         >
                         dan
                         <Link
-                            href="/our-payment"
+                            :href="route('pricing')"
                             class="text-primary font-medium hover:underline"
                             >Biaya kami</Link
                         >
@@ -129,7 +129,7 @@ const submit = () => {
                     </p>
                 </form>
             </div>
-            <div class="col-span-3 banner_img">
+            <div class="hidden lg:block lg:col-span-3 banner_img">
                 <div class="mask_img1">
                     <img src="/assets/auth-banner.png" alt="" />
                     <div class="content text-center text-white font-medium">
@@ -137,7 +137,7 @@ const submit = () => {
                             Menemukan Produk Digital Terbaik untuk Masa Depan
                             Anda
                         </h1>
-                        <p>
+                        <!-- <p>
                             Bergabunglah dengan lebih dari 147.388 kreator yang
                             telah menghasilkan lebih dari Rp. 980.450.000 pada
                             Digi yang menjual produk digital dan keanggotaan.
@@ -155,7 +155,7 @@ const submit = () => {
                             >
                                 Bisa Ditambah nih fiturrrr
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -164,8 +164,11 @@ const submit = () => {
 </template>
 
 <style scoped>
+.container {
+    max-width: 1130px;
+}
 .banner_img {
-    height: 100vh;
+    /* height: 100vh; */
     overflow: hidden;
     padding: 1rem 0;
 }
