@@ -98,7 +98,7 @@
                                                         alt=""
                                                     />
                                                     <p class="font-semibold">
-                                                        {{ value.seller }}
+                                                        {{ value.user.name }}
                                                     </p>
                                                 </div>
                                                 <h1

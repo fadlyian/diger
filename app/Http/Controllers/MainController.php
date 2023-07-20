@@ -50,7 +50,7 @@ class MainController extends Controller
 
     public function allProduct(){
         return inertia::render('AllProduct', [
-            'products' => Product::get(),
+            'products' => Product::with('user')->get(),
             'categories' => Category::all(),
         ]);
     }
