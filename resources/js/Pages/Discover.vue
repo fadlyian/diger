@@ -106,7 +106,7 @@
                                                 >
                                                     Rp {{ value.price }}
                                                 </h1>
-                                                <div
+                                                <!-- <div
                                                     class="flex gap-2 items-center"
                                                 >
                                                     <img
@@ -119,7 +119,7 @@
                                                         Terjual
                                                         {{ value.sold }}
                                                     </p>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </Link>
                                     </div>
@@ -140,7 +140,10 @@
                     <div
                         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
                     >
-                        <div v-for="(value, index) in product" :key="index">
+                        <div
+                            v-for="(value, index) in product.slice(0, 8)"
+                            :key="index"
+                        >
                             <div class="box w-full p-3">
                                 <Link :href="route('product.detail', value.id)">
                                     <img
@@ -164,17 +167,17 @@
                                     <h1 class="my-2 font-semibold text-xl">
                                         Rp {{ value.price }}
                                     </h1>
-                                    <div class="flex gap-2 items-center">
+                                    <!-- <div class="flex gap-2 items-center">
                                         <img
                                             src="/assets/icon/star.svg"
                                             class="h-6 w-6"
                                             alt=""
                                         />
-                                        <!-- <p class="text-sm">
+                                         <p class="text-sm">
                                             {{ value.rating }} | Terjual
                                             {{ value.sold }}
-                                        </p> -->
-                                    </div>
+                                        </p>
+                                    </div> !-->
                                 </Link>
                             </div>
                         </div>
@@ -312,7 +315,7 @@ const category = ref(props.categories);
 .box_orange {
     border-radius: 1.25rem;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
-    height: 25rem;
+    height: 23rem;
     /* width: 15.625rem; */
     text-align: start;
 }
