@@ -62,9 +62,4 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    public function myProduct(){
-        $data = Product::where('user_id', Auth::user()->id)->get();
-
-        return $data;
-    }
 }
