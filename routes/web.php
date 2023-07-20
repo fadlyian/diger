@@ -43,21 +43,6 @@ Route::get('/pengaturan', function () {
     return Inertia::render('Setting');
 })->middleware(['auth'])->name('pengaturan');
 
-// Route::get('/admin', function () {
-//     return Inertia::render('Admin/Beranda');
-// })->middleware(['auth', 'verified'])->name('admin.beranda');
-// Route::get('/admin/users', function () {
-//     return Inertia::render('Admin/Pesanan');
-// })->middleware(['auth', 'verified'])->name('admin.users');
-// Route::get('/admin/categories', function () {
-//     return Inertia::render('Admin/Categories/index');
-// })->middleware(['auth', 'verified'])->name('admin.categories');
-// Route::get('/admin/categories/create', function () {
-//     return Inertia::render('Admin/Categories/CreateEditCategories');
-// })->middleware(['auth', 'verified'])->name('create.categories');
-// Route::get('/admin/pengaturan', function () {
-//     return Inertia::render('Admin/Pengaturan');
-// })->middleware(['auth', 'verified'])->name('admin.pengaturan');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
