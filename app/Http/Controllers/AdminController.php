@@ -17,7 +17,4 @@ class AdminController extends Controller
         return User::all();
     }
 
-    public function categories(){
-        return Category::all();
-    }
 }
