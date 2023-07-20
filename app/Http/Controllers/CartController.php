@@ -14,9 +14,11 @@ class CartController extends Controller
         // return Auth::user()->id;
 
         $cart = Cart::where('user_id', Auth::user()->id)->get();
+
+        // dd(Cart::where('user_id', Auth::user()->id)->with('product.user')->get());
         // return $cart;
         return Inertia::render('Cart', [
-            'products' => Cart::where('user_id', Auth::user()->id)->get(),
+            'products' => Cart::where('user_id', Auth::user()->id)->with('product.user')->get(),
         ]);
     }
 

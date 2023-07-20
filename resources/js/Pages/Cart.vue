@@ -22,7 +22,7 @@
                             class="py-3 pl-3 pr-7 flex gap-2.5 rounded-3xl shadow-md"
                         >
                             <img
-                                src="/assets/product.png"
+                                :src="'/assets/' + product.product.image"
                                 class="w-60 h-auto object-cover rounded-3xl"
                                 alt=""
                             />
@@ -30,13 +30,13 @@
                                 class="w-full flex flex-col justify-center gap-2.5"
                             >
                                 <p class="font-semibold text-xl">
-                                    {{ product.product_id }}
+                                    {{ product.product.name }}
                                 </p>
                                 <p class="font-medium">
-                                    {{ product.user_id }}
+                                    {{ product.product.user.name }}
                                 </p>
                                 <p class="font-semibold text-xl">
-                                    Rp. {{ product.price }}
+                                    Rp. {{ product.product.price }}
                                 </p>
                                 <div class="flex justify-between items-center">
                                     <p class="font-semibold">
