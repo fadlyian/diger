@@ -3,12 +3,20 @@
 
     <CustomerLayout>
         <div class="container">
-            <div class="pt-24 px-12">
+            <div class="text-center py-[28%]" v-if="cart.length < 1">
+                <h1 class="text-[30px] mb-4 font-semibold">Keranjang Anda<br />Masih Kosong</h1>
+                <Link
+                    :href="route('discover')"
+                    class="block cursor-pointer mx-auto bg-white w-max text-black py-2.5 px-14 border border-gray-700 rounded-full font-semibold hover:shadow-lg"
+                    >Ayo Belanja</Link
+                >
+            </div>
+            <div class="pt-24 px-12 pb-[10%]" v-else>
                 <div class="flex justify-between items-center mb-16">
                     <p class="text-3xl font-semibold">Keranjang</p>
                     <div class="text-center">
                         <Link
-                            href="/"
+                            :href="route('discover')"
                             class="block cursor-pointer mx-auto bg-white w-max text-black py-2.5 px-14 border border-gray-700 rounded-full font-semibold hover:shadow-lg"
                             >Lanjut Belanja</Link
                         >
