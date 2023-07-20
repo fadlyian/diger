@@ -40,7 +40,6 @@
                             class="mt-1 hidden w-full"
                             v-model="form.file"
                             required
-                            autofocus
                             autocomplete="off"
                             accept="image/*"
                             @change="onFileChange"
@@ -72,7 +71,6 @@
                             class="mt-1 block w-full"
                             v-model="form.description"
                             required
-                            autofocus
                             autocomplete="off"
                         />
 
