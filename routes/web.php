@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -30,18 +32,10 @@ Route::get('/discover/{id}', [MainController::class, 'show'])->name('product.det
 Route::get('/allProduct', [MainController::class, 'AllProduct'])->name('allProduct');
 
 //user
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth'])->name('dashboard');
 Route::get('/produk', function () {
     return Inertia::render('Produk');
 })->middleware(['auth'])->name('produk');
-Route::get('/pustaka', function () {
-    return Inertia::render('Pustaka');
-})->middleware(['auth'])->name('pustaka');
-Route::get('/pengaturan', function () {
-    return Inertia::render('Setting');
-})->middleware(['auth'])->name('pengaturan');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -53,15 +47,22 @@ Route::middleware('auth')->group(function () {
     Route::get('/cart/{id}', [CartController::class, 'addToCart'])->name('addToCart');
 
     // dashboard
-    Route::get('/myProduct', [ProfileController::class, 'myProduct'])->name('myProduct');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/myProduct', [DashboardController::class, 'myProduct'])->name('myProduct');
+    Route::get('/pustaka', [DashboardController::class, 'pustaka'])->name('pustaka');
+    Route::get('/pengaturan', [DashboardController::class, 'pengaturan'])->name('pengaturan');
 
 
     // ADMIN
     Route::group(['prefix' => 'admin', 'middleware' => 'roles:admin'], function(){
-        route::get('/', [AdminController::class, 'index'])->name('admin');
+        route::get('/', [AdminController::class, 'index'])->name('admin.beranda');
         route::get('/user', [AdminController::class, 'users'])->name('admin.users');
-        route::get('/categories', [AdminController::class, 'categories'])->name('admin.categories');
         route::get('/pengaturan', [AdminController::class, 'pengaturan'])->name('admin.pengaturan');
+
+        //CATEGORIES
+        route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
+        route::get('/categories/create', [CategoryController::class, 'create'])->name('create.categories');
+        //
     });
 });
 
