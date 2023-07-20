@@ -24,7 +24,7 @@
                     >
                         <div v-for="(value, index) in product" :key="index">
                             <div class="box w-full p-3">
-                                <Link :href="'/product/' + value.id">
+                                <Link :href="route('product.detail', value.id)">
                                     <img
                                         :src="'assets/' + value.image"
                                         class="w-full h-56 rounded-2xl object-cover"

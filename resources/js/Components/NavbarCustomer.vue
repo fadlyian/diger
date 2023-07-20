@@ -22,6 +22,9 @@
                         <div v-if="currentUrl !== '/allProduct'">
                             {{ link.label }}
                         </div>
+                        <div v-if="currentUrl === '/allProduct'">
+                            <p class="text-white">-</p>
+                        </div>
                     </Link>
                 </div>
 

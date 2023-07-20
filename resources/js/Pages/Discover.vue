@@ -142,7 +142,7 @@
                     >
                         <div v-for="(value, index) in product" :key="index">
                             <div class="box w-full p-3">
-                                <Link :href="'/product/' + value.id">
+                                <Link :href="route('product.detail', value.id)">
                                     <img
                                         :src="'assets/' + value.image"
                                         class="w-full h-56 rounded-2xl object-cover"
@@ -181,7 +181,7 @@
                     </div>
                     <div class="mt-8 text-center">
                         <Link
-                            href="#"
+                            :href="route('allProduct')"
                             class="block mx-auto w-max text-primary py-2.5 px-14 border border-primary rounded-full font-semibold hover:bg-primary hover:text-white hover:shadow-lg"
                             >Muat Lebih Banyak</Link
                         >
