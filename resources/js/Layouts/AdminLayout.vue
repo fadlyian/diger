@@ -5,19 +5,19 @@ import { Link } from "@inertiajs/vue3";
 
 const links = ref([
     {
-        route: "admin.beranda",
+        route: "admin",
         image: "/assets/icon/home.svg",
         label: "Beranda",
     },
     {
-        route: "admin.pesanan",
+        route: "admin.users",
         image: "/assets/icon/cart2.svg",
-        label: "Pesanan",
+        label: "Users",
     },
     {
-        route: "admin.laporan",
+        route: "admin.categories",
         image: "/assets/icon/laporan.svg",
-        label: "Laporan",
+        label: "Categories",
     },
     {
         route: "admin.pengaturan",
