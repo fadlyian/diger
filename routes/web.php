@@ -61,12 +61,15 @@ Route::get('/pengaturan', function () {
 Route::get('/admin', function () {
     return Inertia::render('Admin/Beranda');
 })->middleware(['auth', 'verified'])->name('admin.beranda');
-Route::get('/admin/pesanan', function () {
+Route::get('/admin/users', function () {
     return Inertia::render('Admin/Pesanan');
-})->middleware(['auth', 'verified'])->name('admin.pesanan');
-Route::get('/admin/laporan', function () {
-    return Inertia::render('Admin/Laporan');
-})->middleware(['auth', 'verified'])->name('admin.laporan');
+})->middleware(['auth', 'verified'])->name('admin.users');
+Route::get('/admin/categories', function () {
+    return Inertia::render('Admin/Categories/index');
+})->middleware(['auth', 'verified'])->name('admin.categories');
+Route::get('/admin/categories/create', function () {
+    return Inertia::render('Admin/Categories/CreateEditCategories');
+})->middleware(['auth', 'verified'])->name('create.categories');
 Route::get('/admin/pengaturan', function () {
     return Inertia::render('Admin/Pengaturan');
 })->middleware(['auth', 'verified'])->name('admin.pengaturan');

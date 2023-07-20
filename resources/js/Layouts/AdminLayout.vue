@@ -5,7 +5,7 @@ import { Link } from "@inertiajs/vue3";
 
 const links = ref([
     {
-        route: "admin",
+        route: "admin.beranda",
         image: "/assets/icon/home.svg",
         label: "Beranda",
     },
