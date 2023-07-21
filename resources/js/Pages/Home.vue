@@ -88,7 +88,7 @@
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
                         <div v-for="(value, index) in category" :key="index">
-                            <Link href="#">
+                            <Link :href="route('productByCategory', value.id)">
                                 <div
                                     class="bg-white rounded-[1.25rem] p-[.62rem] box_category flex gap-6"
                                 >
