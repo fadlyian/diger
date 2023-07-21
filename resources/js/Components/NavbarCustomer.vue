@@ -4,7 +4,7 @@
         <div class="container">
             <div class="relative">
                 <!-- Logo -->
-                <div class="absolute left-0 -top-2">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2">
                     <Link :href="route('home')">
                         <ApplicationLogo />
                     </Link>
@@ -19,7 +19,7 @@
                         class="font-medium hover:text-primary"
                         :class="{ 'text-primary': route().current(link.route) }"
                     >
-                    {{ link.label }}
+                        {{ link.label }}
                         <!-- <div v-if="link.route !== '/allProduct'">
                         </div> -->
                         <!-- <div v-if="currentUrl === '/allProduct'">
@@ -28,7 +28,7 @@
                     </Link>
                 </div>
                 <!-- Button Authentication -->
-                <div class="absolute right-0 top-0">
+                <div class="absolute right-0 top-1/2 -translate-y-1/2">
                     <div v-if="$page.props.auth.user">
                         <div
                             v-if="$page.props.auth.user"
