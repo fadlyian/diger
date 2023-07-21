@@ -87,7 +87,7 @@
                                                 <h1
                                                     class="mt-3 mb-2 font-semibold text-xl"
                                                 >
-                                                    {{ value.id }}
+                                                    {{ value.name }}
                                                 </h1>
                                                 <div
                                                     class="flex gap-2 items-center"
