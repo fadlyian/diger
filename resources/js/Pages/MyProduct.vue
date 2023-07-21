@@ -3,8 +3,13 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
-import { Head, useForm } from "@inertiajs/vue3";
-import { ref, computed } from "vue";
+import { Head, useForm, usePage } from "@inertiajs/vue3";
+import { ref, computed, onMounted } from "vue";
+
+const { props } = usePage();
+const data = ref({
+    products: props.products,
+});
 
 const form = useForm({
     name: "",
@@ -24,7 +29,6 @@ const clearForm = () => {
     form.productImage = null;
 };
 
-// make a function that fill the form variable with the appropriate data of what index is clicked
 const editProduct = (index) => {
     form.name = data.value.products[index].name;
     form.category = data.value.products[index].category;
@@ -34,54 +38,19 @@ const editProduct = (index) => {
     form.productImage = data.value.products[index].productImage;
 };
 
-const categories = ref(["Desain", "Tulisan dan Publikasi", "Film", "Lainnya"]);
-const editTambahProduk = ref(false);
-const formTambah = ref(false);
+const categories = ref([
+    "Desain",
+    "Tulisan dan Publikasi",
+    "Film",
+    "Software Development",
+    "Pendidikan",
+    "Musik",
+    "Lainnya",
+]);
+
+const showForm = ref(false);
+const formTambah = ref(true);
 const formEdit = ref(false);
-
-const data = ref({
-    subscribers: 12312,
-    total_income: 1068400,
-    products: [
-        {
-            id: 1,
-            image: "/assets/product.png",
-            name: "How to Paint Watercolor Book 1: Design Paintings from Photos by Daniel Novotny (e-book)",
-            seller: "Arif Saputra",
-            price: 98000,
-            type: "pdf",
-            category: "Desain",
-            size: "1.5 MB",
-        },
-        {
-            id: 2,
-            image: "/assets/product.png",
-            name: "Digital Product",
-            seller: "Arif Saputra",
-            price: 298000,
-            type: "jpg",
-            category: "Tulisan dan Publikasi",
-            size: "2.4 MB",
-        },
-        {
-            id: 3,
-            image: "/assets/product.png",
-            name: "Digital Product",
-            seller: "Arif Saputra",
-            price: 19800000,
-            type: "png",
-            category: "Film",
-            size: "3.89 MB",
-        },
-    ],
-});
-
-const total_income_rupiah = computed(() => {
-    return data.value.total_income.toLocaleString("id-ID", {
-        style: "currency",
-        currency: "IDR",
-    });
-});
 
 const onFileChange = (event) => {
     console.log(event);
@@ -124,6 +93,21 @@ const triggerImageInput = () => {
 const submit = () => {
     console.log("form kesubmit");
 };
+
+const formatRupiah = (number) => {
+    const formatter = new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+    });
+
+    return formatter.format(number);
+};
+
+onMounted(() => {
+    console.log(data.value);
+});
 </script>
 
 <template>
@@ -131,29 +115,44 @@ const submit = () => {
 
     <AuthenticatedLayout>
         <template #header>
-            <h1 class="text-[2rem] font-bold">Produk</h1>
+            <h1 class="text-[2rem] font-bold flex items-center gap-3">
+                <svg
+                    v-if="showForm"
+                    @click="(showForm = !showForm), clearForm()"
+                    class="w-6 h-6 cursor-pointer"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 12H5M12 19l-7-7 7-7"
+                    ></path>
+                </svg>
+                Produk
+            </h1>
         </template>
-        <div class="my-12">
-            <div v-if="data.products">
-                <div class="grid grid-cols-8 gap-8">
-                    <div
-                        class="col-span-4 pt-7 px-8 pb-9 shadow-md space-y-6 text-center"
+        <div class="my-12 relative">
+            <div
+                v-if="data.products"
+                :class="showForm ? 'opacity-0' : 'opacity-100'"
+            >
+                <div class="">
+                    <button
+                        @click="
+                            (showForm = !showForm),
+                                clearForm(),
+                                (formTambah = true)
+                        "
+                        class="font-semibold py-3 px-24 bg-primary hover:bg-primary-hover hover:shadow-xl active:bg-primary-active rounded-full text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
                     >
-                        <p class="font-medium">Total Pendapatan</p>
-                        <p class="font-semibold text-[32px]">
-                            {{ total_income_rupiah }}
-                        </p>
-                    </div>
-                    <div
-                        class="col-span-4 pt-7 px-8 pb-9 shadow-md space-y-6 text-center"
-                    >
-                        <p class="font-medium">Pelanggan</p>
-                        <p class="font-semibold text-[32px]">
-                            {{ data.subscribers }}
-                        </p>
-                    </div>
+                        Produk Baru
+                    </button>
                 </div>
-                <div class="mt-11">
+                <div class="mt-6">
                     <p class="font-medium">Semua Produk</p>
                     <div class="grid grid-cols-12 mt-5">
                         <div class="px-5 py-2.5 col-span-4 text-sm font-medium">
@@ -179,7 +178,7 @@ const submit = () => {
                             <div
                                 class="px-5 py-4 col-span-2 text-sm font-medium"
                             >
-                                {{ produk.price }}
+                                {{ formatRupiah(produk.price) }}
                             </div>
                             <div
                                 class="px-5 py-4 col-span-2 text-sm font-medium"
@@ -189,7 +188,7 @@ const submit = () => {
                             <div
                                 class="px-5 py-4 col-span-2 text-sm font-medium"
                             >
-                                {{ produk.size }}
+                                {{ produk.sizeFile }}
                             </div>
                             <div
                                 class="px-5 py-4 col-span-2 text-sm font-medium"
@@ -199,7 +198,7 @@ const submit = () => {
                                 >
                                     <svg
                                         @click="
-                                            (editTambahProduk = true),
+                                            (showForm = true),
                                                 editProduct(index)
                                         "
                                         class="cursor-pointer"
@@ -232,18 +231,6 @@ const submit = () => {
                         </div>
                     </div>
                 </div>
-                <div class="mt-16">
-                    <button
-                        @click="
-                            (editTambahProduk = !editTambahProduk),
-                                clearForm(),
-                                (formTambah = true)
-                        "
-                        class="block mx-auto font-semibold py-3 px-24 bg-primary hover:bg-primary-hover hover:shadow-xl active:bg-primary-active rounded-full text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
-                    >
-                        Produk Baru
-                    </button>
-                </div>
             </div>
             <div
                 v-else
@@ -255,16 +242,18 @@ const submit = () => {
                 </p>
                 <div class="mt-12">
                     <button
-                        @click="
-                            (editTambahProduk = !editTambahProduk), clearForm()
-                        "
+                        @click="(showForm = !showForm), clearForm()"
                         class="block mx-auto py-3 px-24 font-semibold bg-white text-primary hover:text-white hover:bg-primary active:bg-primary-active text-center rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
                     >
                         Produk Baru
                     </button>
                 </div>
             </div>
-            <div v-show="editTambahProduk">
+            <div
+                v-show="showForm"
+                class="absolute top-0 w-full bg-white"
+                :class="showForm ? 'show' : 'hide-offscreen'"
+            >
                 <form @submit.prevent="submit">
                     <div>
                         <InputLabel isRequired="true" for="name" value="Nama" />
@@ -341,6 +330,7 @@ const submit = () => {
 
                         <textarea
                             placeholder=""
+                            row="6"
                             id="description"
                             type="text"
                             class="mt-1 block w-full border border-gray-400 focus:border-primary focus:ring-primary placeholder:text-gray-400 rounded-[30px] px-6 py-3 shadow-sm"
@@ -505,7 +495,7 @@ input[type="file"]::-webkit-file-upload-button {
 input[type="file"]::before {
     content: "Pilih File";
     display: inline-block;
-    background-color: #4f46e5; /* Replace this with your primary color */
+    background-color: #feb20e;
     color: white;
     padding: 8px 12px;
     border-radius: 4px;
@@ -513,6 +503,17 @@ input[type="file"]::before {
 }
 
 input[type="file"]:hover::before {
-    background-color: #665ff8; /* Replace this with your primary hover color */
+    background-color: #ffd271;
+}
+
+/* Sembunyikan komponen di luar layar */
+.hide-offscreen {
+    transform: translateX(100%);
+}
+
+/* Tampilkan komponen */
+.show {
+    transform: translateX(0);
+    transition: transform 1s ease-in-out;
 }
 </style>
