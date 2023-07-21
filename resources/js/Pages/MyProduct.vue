@@ -9,6 +9,7 @@ import { ref, computed, onMounted } from "vue";
 const { props } = usePage();
 const data = ref({
     products: props.products,
+    categories: props.categories,
 });
 
 const form = useForm({
@@ -38,15 +39,15 @@ const editProduct = (index) => {
     form.productImage = data.value.products[index].productImage;
 };
 
-const categories = ref([
-    "Desain",
-    "Tulisan dan Publikasi",
-    "Film",
-    "Software Development",
-    "Pendidikan",
-    "Musik",
-    "Lainnya",
-]);
+// const categories = ref([
+//     "Desain",
+//     "Tulisan dan Publikasi",
+//     "Film",
+//     "Software Development",
+//     "Pendidikan",
+//     "Musik",
+//     "Lainnya",
+// ]);
 
 const showForm = ref(false);
 const formTambah = ref(true);
@@ -92,6 +93,7 @@ const triggerImageInput = () => {
 
 const submit = () => {
     console.log("form kesubmit");
+    form.post(route('product.store'));
 };
 
 const formatRupiah = (number) => {
@@ -264,7 +266,7 @@ onMounted(() => {
                             type="text"
                             class="mt-1 block w-full"
                             v-model="form.name"
-                            required
+
                             autofocus
                             autocomplete="off"
                         />
@@ -282,19 +284,21 @@ onMounted(() => {
                             id="category"
                             class="mt-1 block w-full border border-gray-400 focus:border-primary focus:ring-primary placeholder:text-gray-400 rounded-full px-6 py-3 shadow-sm"
                             v-model="form.category"
-                            required
+
                             autocomplete="off"
                         >
                             <option value="" disabled selected>
                                 Pilih Kategori
                             </option>
                             <option
-                                v-for="(category, index) in categories"
+                                v-for="(categories, index) in data.categories"
                                 :key="index"
-                                :value="category"
+                                :value="categories.id"
+                                :selected="categories.id ? category : ''"
                                 class="bg-white text-gray-700 hover:bg-primaryx"
                             >
-                                {{ category }}
+                                {{ categories.name }}
+                                {{ categories.id }}
                             </option>
                             <div
                                 class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
@@ -335,7 +339,7 @@ onMounted(() => {
                             type="text"
                             class="mt-1 block w-full border border-gray-400 focus:border-primary focus:ring-primary placeholder:text-gray-400 rounded-[30px] px-6 py-3 shadow-sm"
                             v-model="form.description"
-                            required
+
                             autocomplete="off"
                         />
 
@@ -358,7 +362,7 @@ onMounted(() => {
                             type="number"
                             class="mt-1 block w-full"
                             v-model="form.price"
-                            required
+
                             autocomplete="off"
                         />
 
@@ -382,7 +386,7 @@ onMounted(() => {
                                 class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                                 @change="onFileChange"
                                 accept="image"
-                                required
+
                             />
                             <span
                                 v-if="!form.productFile"

@@ -54,7 +54,10 @@ Route::middleware('auth')->group(function () {
 
     // dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/myProduct', [DashboardController::class, 'myProduct'])->name('myProduct');
+        // product
+        Route::get('/myProduct', [DashboardController::class, 'myProduct'])->name('myProduct');
+        Route::resource('/product', ProductController::class);
+
     Route::get('/pustaka', [DashboardController::class, 'pustaka'])->name('pustaka');
     Route::get('/pengaturan', [DashboardController::class, 'pengaturan'])->name('pengaturan');
 
