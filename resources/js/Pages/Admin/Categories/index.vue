@@ -33,7 +33,7 @@
                             <button>
                                 <img src="/assets/icon/refresh.svg" alt="" />
                             </button>
-                            <button>
+                            <button @click="destroy(value.id)">
                                 <img src="/assets/icon/delete.svg" alt="" />
                             </button>
                         </div>
@@ -48,7 +48,14 @@
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import { Head, Link, usePage } from "@inertiajs/vue3";
 import { ref } from "vue";
+import {Inertia} from "@inertiajs/inertia";
 
 const { props } = usePage();
 const categories = ref(props.categories);
+
+const destroy = (id) =>{
+    if(confirm("Hapus dari Category?")){
+        Inertia.delete(route('destroy.categories',id))
+    }
+}
 </script>
