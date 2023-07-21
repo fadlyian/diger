@@ -71,7 +71,13 @@
                             class="p-5 rounded-3xl shadow-md flex justify-between items-center text-xl font-semibold"
                         >
                             <p>Total</p>
-                            <p class="text-primary">Rp. {{ total }}</p>
+                            <p class="text-primary">{{
+                                        new Intl.NumberFormat("id-ID", {
+                                            style: "currency",
+                                            currency: "IDR",
+                                            minimumFractionDigits: 0,
+                                        }).format(total)
+                                    }}</p>
                         </div>
                     </div>
                     <div class="col-span-2">
