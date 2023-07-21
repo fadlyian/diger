@@ -4,7 +4,9 @@
     <CustomerLayout>
         <div class="container">
             <div class="text-center py-[28%]" v-if="cart.length < 1">
-                <h1 class="text-[30px] mb-4 font-semibold">Keranjang Anda<br />Masih Kosong</h1>
+                <h1 class="text-[30px] mb-4 font-semibold">
+                    Keranjang Anda<br />Masih Kosong
+                </h1>
                 <Link
                     :href="route('discover')"
                     class="block cursor-pointer mx-auto bg-white w-max text-black py-2.5 px-14 border border-gray-700 rounded-full font-semibold hover:shadow-lg"
@@ -44,7 +46,13 @@
                                     {{ product.product.user.name }}
                                 </p>
                                 <p class="font-semibold text-xl">
-                                    Rp. {{ product.product.price }}
+                                    {{
+                                        new Intl.NumberFormat("id-ID", {
+                                            style: "currency",
+                                            currency: "IDR",
+                                            minimumFractionDigits: 0,
+                                        }).format(product.product.price)
+                                    }}
                                 </p>
                                 <div class="flex justify-between items-center">
                                     <p class="font-semibold">
