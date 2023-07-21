@@ -89,7 +89,7 @@
                                         produk fisik.
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td
                                         class="flex justify-between items-center"
                                     >
@@ -98,7 +98,7 @@
                                         </p>
                                         <p>{{ product.level }}</p>
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td
                                         class="flex justify-between items-center"
@@ -115,14 +115,14 @@
                                         <p>{{ product.sizeFile }}</p>
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td
                                         class="flex justify-between items-center"
                                     >
                                         <p class="font-medium">Panjang</p>
                                         <p>{{ product.pages }} pages</p>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </table>
                         </div>
                     </div>
