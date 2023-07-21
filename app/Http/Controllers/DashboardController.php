@@ -16,7 +16,9 @@ class DashboardController extends Controller
     public function myProduct(){
         $data = Product::where('user_id', Auth::user()->id)->get();
 
-        return $data;
+        return Inertia::render('MyProduct', [
+            'products' => $data,
+        ]);
     }
 
     public function pustaka(){
