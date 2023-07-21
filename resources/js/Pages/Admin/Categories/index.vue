@@ -15,6 +15,9 @@
                 <tr>
                     <th class="text-sm font-medium text-start p-4">No</th>
                     <th class="text-sm font-medium text-start p-4">Category</th>
+                    <th class="text-sm font-medium text-start p-4">
+                        Description
+                    </th>
                     <th class="text-sm font-medium text-start p-4">Action</th>
                 </tr>
                 <tr
@@ -27,6 +30,9 @@
                     </td>
                     <td class="text-sm font-medium text-start p-4">
                         {{ value.name }}
+                    </td>
+                    <td class="text-sm font-medium text-start p-4">
+                        {{ value.description }}
                     </td>
                     <td class="text-sm font-medium text-start p-4">
                         <div class="flex gap-4">
@@ -48,14 +54,14 @@
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import { Head, Link, usePage } from "@inertiajs/vue3";
 import { ref } from "vue";
-import {Inertia} from "@inertiajs/inertia";
+import { Inertia } from "@inertiajs/inertia";
 
 const { props } = usePage();
 const categories = ref(props.categories);
 
-const destroy = (id) =>{
-    if(confirm("Hapus dari Category?")){
-        Inertia.delete(route('destroy.categories',id))
+const destroy = (id) => {
+    if (confirm("Hapus dari Category?")) {
+        Inertia.delete(route("destroy.categories", id));
     }
-}
+};
 </script>
