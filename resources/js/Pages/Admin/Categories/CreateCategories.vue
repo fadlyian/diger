@@ -3,7 +3,25 @@
 
     <AdminLayout>
         <template #header>
-            <h1 class="text-[2rem] font-bold">Categories - add</h1>
+            <h1 class="text-[2rem] font-bold flex items-center gap-3">
+                <Link :href="route('admin.categories')">
+                    <svg
+                        class="w-6 h-6 cursor-pointer"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 12H5M12 19l-7-7 7-7"
+                        ></path>
+                    </svg>
+                </Link>
+                Categories - add
+            </h1>
         </template>
         <div class="py-12">
             <!-- <form @submit.prevent="form.post(route('store.categories'))"> -->
@@ -79,7 +97,8 @@
                         <!-- <InputError class="mt-2" :message="errors.description" /> -->
                     </div>
                 </div>
-                <button @click="submit()"
+                <button
+                    @click="submit()"
                     type="submit"
                     class="block w-max ml-auto text-white cursor-pointer py-2.5 px-14 rounded-full font-semibold bg-primary hover:shadow-lg"
                 >
