@@ -5,7 +5,7 @@
         <template #header>
             <div class="flex gap-5 justify-center items-center">
                 <a
-                    href="#"
+                    :href="route('productByCategory', value.id)"
                     class="font-medium hover:text-primary"
                     v-for="value in category"
                     :key="value.id"

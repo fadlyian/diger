@@ -19,7 +19,9 @@
             <div class="container">
                 <!-- product -->
                 <section id="productByCategory">
-                    <h1 class="mb-8 font-semibold text-[22px]">{{ judulCategory.name }}</h1>
+                    <h1 class="mb-8 font-semibold text-[22px]">
+                        {{ judulCategory.name }}
+                    </h1>
                     <div
                         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
                     >
@@ -45,7 +47,13 @@
                                         </p>
                                     </div>
                                     <h1 class="my-2 font-semibold text-xl">
-                                        Rp {{ value.price }}
+                                        {{
+                                            new Intl.NumberFormat("id-ID", {
+                                                style: "currency",
+                                                currency: "IDR",
+                                                minimumFractionDigits: 0,
+                                            }).format(value.price)
+                                        }}
                                     </h1>
                                     <!-- <div class="flex gap-2 items-center">
                                         <img
