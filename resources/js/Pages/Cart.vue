@@ -56,14 +56,14 @@
                                 </p>
                                 <div class="flex justify-between items-center">
                                     <p class="font-semibold">
-                                        Qty:
                                         <!-- <span class="font-medium">{{
                                             product.qty
                                         }}</span> -->
                                     </p>
-                                    <p class="font-medium cursor-pointer">
-                                        Hapus
-                                    </p>
+                                    <button type="button"
+                                        class="block cursor-pointer mx-auto bg-primary w-max text-white py-2.5 px-14 border border-primary rounded-full font-semibold hover:shadow-lg"
+                                        @click="destroy(product.product.id)"
+                                    >Hapus</button>
                                 </div>
                             </div>
                         </div>
@@ -103,6 +103,12 @@
 import CustomerLayout from "@/Layouts/CustomerLayout.vue";
 import { Head, Link, usePage } from "@inertiajs/vue3";
 import { ref, computed } from "vue";
+import { Inertia } from '@inertiajs/inertia'
+// import { InertiaLink, useForm } from "@inertiajs/vue3";
+// import { route } from "@inertiajs/vue3";
+
+const { props } = usePage();
+const cart = ref(props.products);
 
 const totalPrice = computed(() => {
     const total = cart.value.reduce((accumulator, product) => {
@@ -119,42 +125,13 @@ const totalPrice = computed(() => {
     });
 });
 
-// const cart = ref([
-//     {
-//         id: 1,
-//         image: "/assets/product.png",
-//         name: "How to Paint Watercolor Book 1: Design Paintings from Photos by Daniel Novotny (e-book)",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Desain",
-//         sold: 100,
-//         qty: 1,
-//     },
-//     {
-//         id: 2,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Tulisan dan Publikasi",
-//         sold: 100,
-//         qty: 1,
-//     },
-//     {
-//         id: 3,
-//         image: "/assets/product.png",
-//         name: "Digital Product",
-//         seller: "Arif Saputra",
-//         price: "98.000,00",
-//         rating: 4.8,
-//         category: "Film",
-//         sold: 100,
-//         qty: 1,
-//     },
-// ]);
+// Method untuk menghapus item dari keranjang
+const destroy = (id) => {
+    if(confirm("hapus dari cart?")){
+        Inertia.delete(route('removeToCart',id))
+    }
 
-const { props } = usePage();
-const cart = ref(props.products);
+    return {destroy}
+};
+
 </script>

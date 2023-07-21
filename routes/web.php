@@ -31,6 +31,7 @@ Route::get('/discover',[MainController::class, 'discover'])->name('discover');
 Route::get('/discover/{id}', [MainController::class, 'show'])->name('product.detail');
 
 Route::get('/allProduct', [MainController::class, 'AllProduct'])->name('allProduct');
+Route::get('/allProduct/category/{id}', [MainController::class, 'productByCategory'])->name('productByCategory');
 
 //user
 Route::get('/produk', function () {
@@ -49,6 +50,7 @@ Route::middleware('auth')->group(function () {
     //cart
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/cart/{id}', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::delete('/cart/{id}', [CartController::class, 'removeToCart'])->name('removeToCart');
 
     // dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
