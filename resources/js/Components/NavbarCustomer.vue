@@ -27,7 +27,6 @@
                         </div>
                     </Link>
                 </div>
-
                 <!-- Button Authentication -->
                 <div class="absolute right-0 top-0">
                     <div v-if="$page.props.auth.user">
@@ -50,18 +49,46 @@
                                     </template>
 
                                     <template #content>
-                                        <DropdownLink
-                                            :href="route('dashboard')"
+                                        <div
+                                            v-if="
+                                                $page.props.auth.user.role ===
+                                                'admin'
+                                            "
                                         >
-                                            Dashboard
-                                        </DropdownLink>
-                                        <DropdownLink
-                                            :href="route('logout')"
-                                            method="post"
-                                            as="button"
-                                        >
-                                            Log Out
-                                        </DropdownLink>
+                                            <DropdownLink
+                                                :href="route('admin.beranda')"
+                                            >
+                                                Dashboard Admin
+                                            </DropdownLink>
+                                            <DropdownLink
+                                                :href="route('dashboard')"
+                                            >
+                                                Dashboard User
+                                            </DropdownLink>
+                                            <DropdownLink
+                                                :href="route('logout')"
+                                                method="post"
+                                                as="button"
+                                                class="text-red-500"
+                                            >
+                                                Log Out
+                                            </DropdownLink>
+                                        </div>
+                                        <div v-else>
+                                            <DropdownLink
+                                                :href="route('dashboard')"
+                                            >
+                                                Dashboard
+                                            </DropdownLink>
+                                            <DropdownLink
+                                                :href="route('logout')"
+                                                method="post"
+                                                as="button"
+                                                class="text-red-500"
+                                            >
+                                                Log Out
+                                            </DropdownLink>
+                                        </div>
                                     </template>
                                 </Dropdown>
                             </div>
