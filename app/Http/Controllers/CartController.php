@@ -32,4 +32,15 @@ class CartController extends Controller
 
         return to_route('cart');
     }
+
+    public function removeToCart($id){
+        // return "berhasil ";
+        // return
+        $product = Cart::where('product_id', $id)->where('user_id', Auth::user()->id)->first();
+        // dd($product);
+        // return $product;
+        $product->delete();
+
+        return to_route('cart');
+    }
 }

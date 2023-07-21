@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
     //cart
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/cart/{id}', [CartController::class, 'addToCart'])->name('addToCart');
+    Route::delete('/cart/{id}', [CartController::class, 'removeToCart'])->name('removeToCart');
 
     // dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
