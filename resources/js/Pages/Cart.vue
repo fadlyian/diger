@@ -71,7 +71,7 @@
                             class="p-5 rounded-3xl shadow-md flex justify-between items-center text-xl font-semibold"
                         >
                             <p>Total</p>
-                            <!-- <p class="text-primary">{{ totalPrice }}</p> -->
+                            <p class="text-primary">Rp. {{ total }}</p>
                         </div>
                     </div>
                     <div class="col-span-2">
@@ -107,23 +107,14 @@ import { Inertia } from '@inertiajs/inertia'
 // import { InertiaLink, useForm } from "@inertiajs/vue3";
 // import { route } from "@inertiajs/vue3";
 
+let total = 0;
+
 const { props } = usePage();
 const cart = ref(props.products);
 
-const totalPrice = computed(() => {
-    const total = cart.value.reduce((accumulator, product) => {
-        const price = parseFloat(
-            product.price.replace(".", "").replace(",", ".")
-        );
-        return accumulator + price * product.qty;
-    }, 0);
-
-    return total.toLocaleString("id-ID", {
-        style: "currency",
-        currency: "IDR",
-        minimumFractionDigits: 2,
-    });
-});
+for (const product of cart.value) {
+  total += product.product.price
+}
 
 // Method untuk menghapus item dari keranjang
 const destroy = (id) => {
