@@ -19,12 +19,12 @@
                         class="font-medium hover:text-primary"
                         :class="{ 'text-primary': route().current(link.route) }"
                     >
-                        <div v-if="currentUrl !== '/allProduct'">
-                            {{ link.label }}
-                        </div>
-                        <div v-if="currentUrl === '/allProduct'">
+                    {{ link.label }}
+                        <!-- <div v-if="link.route !== '/allProduct'">
+                        </div> -->
+                        <!-- <div v-if="currentUrl === '/allProduct'">
                             <p class="text-white">-</p>
-                        </div>
+                        </div> -->
                     </Link>
                 </div>
                 <!-- Button Authentication -->

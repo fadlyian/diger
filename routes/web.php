@@ -31,6 +31,7 @@ Route::get('/discover',[MainController::class, 'discover'])->name('discover');
 Route::get('/discover/{id}', [MainController::class, 'show'])->name('product.detail');
 
 Route::get('/allProduct', [MainController::class, 'AllProduct'])->name('allProduct');
+Route::get('/allProduct/category/{id}', [MainController::class, 'productByCategory'])->name('productByCategory');
 
 //user
 Route::get('/produk', function () {

@@ -58,6 +58,13 @@ class MainController extends Controller
         ]);
     }
 
+    public function productByCategory(){
+        return inertia::render('ProductByCategory', [
+            'products' => Product::with('user')->get(),
+            'categories' => Category::all(),
+        ]);
+    }
+
     public function terms(){
         return inertia::render('Blog/Terms');
     }
