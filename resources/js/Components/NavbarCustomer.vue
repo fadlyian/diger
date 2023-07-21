@@ -6,12 +6,14 @@
                 <!-- Logo -->
                 <div class="absolute left-0 top-1/2 -translate-y-1/2">
                     <Link :href="route('home')">
-                        <ApplicationLogo />
+                        <ApplicationLogo class="w-20 lg:w-24" />
                     </Link>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="mx-auto flex gap-8 justify-center">
+                <div
+                    class="mx-auto md:flex gap-8 justify-center text-sm xl:text-base hidden"
+                >
                     <Link
                         v-for="link in links"
                         :key="link.route"
@@ -20,11 +22,6 @@
                         :class="{ 'text-primary': route().current(link.route) }"
                     >
                         {{ link.label }}
-                        <!-- <div v-if="link.route !== '/allProduct'">
-                        </div> -->
-                        <!-- <div v-if="currentUrl === '/allProduct'">
-                            <p class="text-white">-</p>
-                        </div> -->
                     </Link>
                 </div>
                 <!-- Button Authentication -->
@@ -32,13 +29,13 @@
                     <div v-if="$page.props.auth.user">
                         <div
                             v-if="$page.props.auth.user"
-                            class="flex gap-5 items-center"
+                            class="flex gap-8 items-center"
                         >
-                            <Link :href="route('cart')">
+                            <Link :href="route('cart')" class="hidden md:block">
                                 <img src="/assets/icon/cart.svg" alt="" />
                             </Link>
                             <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
+                            <div class="relative">
                                 <Dropdown align="right" width="48">
                                     <template #trigger>
                                         <img
@@ -92,6 +89,19 @@
                                     </template>
                                 </Dropdown>
                             </div>
+                            <!-- <button
+                                @click="
+                                    showingNavigationDropdown =
+                                        !showingNavigationDropdown
+                                "
+                                class="md:hidden"
+                            >
+                                <img
+                                    src="/assets/icon/hamburger.svg"
+                                    width="20"
+                                    alt=""
+                                />
+                            </button> -->
                         </div>
                     </div>
                     <div v-else class="flex gap-3">
@@ -129,6 +139,8 @@ const props = defineProps({
         default: false,
     },
 });
+
+// const showingNavigationDropdown = ref(false);
 
 const links = ref([
     { route: "home", label: "Home" },
