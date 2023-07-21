@@ -19,7 +19,7 @@
             <div class="container">
                 <!-- product -->
                 <section id="productByCategory">
-                    <h1 class="mb-8 font-semibold text-[22px]">Nama Kategori</h1>
+                    <h1 class="mb-8 font-semibold text-[22px]">{{ judulCategory.name }}</h1>
                     <div
                         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
                     >
@@ -80,6 +80,7 @@ import "vue3-carousel/dist/carousel.css";
 const { props } = usePage();
 const product = ref(props.products);
 const category = ref(props.categories);
+const judulCategory = ref(props.judulCategory);
 </script>
 
 <style scoped>

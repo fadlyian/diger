@@ -59,11 +59,12 @@ class MainController extends Controller
     }
 
     public function productByCategory($id){
-        $d = Product::where('category_id', $id)->with('user')->get();
+        $d = Product::where('category_id', $id)->with(['user','category'])->get();
         // dd($d);
         return inertia::render('ProductByCategory', [
             'products' => $d,
             'categories' => Category::all(),
+            'judulCategory' => Category::find($id),
         ]);
     }
 
