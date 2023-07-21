@@ -33,7 +33,7 @@
                         {{ value.role }}
                     </td>
                     <td class="text-sm font-medium text-center p-4">
-                        <button>
+                        <button type="button" @click="destroy(value.id)">
                             <img src="/assets/icon/delete.svg" alt="" />
                         </button>
                     </td>
@@ -47,7 +47,17 @@
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import { Head, usePage } from "@inertiajs/vue3";
 import { ref } from "vue";
+import { Inertia } from '@inertiajs/inertia'
 
 const { props } = usePage();
 const users = ref(props.users);
+
+// Method untuk menghapus item dari keranjang
+const destroy = (id) => {
+    if(confirm("Hapus User?")){
+        Inertia.delete(route('admin.deleteUser',id))
+    }
+
+    return {destroy}
+};
 </script>

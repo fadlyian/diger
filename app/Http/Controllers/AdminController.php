@@ -19,4 +19,10 @@ class AdminController extends Controller
         ]);
     }
 
+    public function deleteUser($id){
+        User::findorfail($id)->delete();
+
+        return to_route('admin.users');
+    }
+
 }
