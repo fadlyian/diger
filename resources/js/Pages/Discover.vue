@@ -104,7 +104,16 @@
                                                 <h1
                                                     class="my-2 font-semibold text-xl"
                                                 >
-                                                    Rp {{ value.price }}
+                                                    {{
+                                                        new Intl.NumberFormat(
+                                                            "id-ID",
+                                                            {
+                                                                style: "currency",
+                                                                currency: "IDR",
+                                                                minimumFractionDigits: 0,
+                                                            }
+                                                        ).format(value.price)
+                                                    }}
                                                 </h1>
                                                 <!-- <div
                                                     class="flex gap-2 items-center"
@@ -165,7 +174,13 @@
                                         </p>
                                     </div>
                                     <h1 class="my-2 font-semibold text-xl">
-                                        Rp {{ value.price }}
+                                        {{
+                                            new Intl.NumberFormat("id-ID", {
+                                                style: "currency",
+                                                currency: "IDR",
+                                                minimumFractionDigits: 0,
+                                            }).format(value.price)
+                                        }}
                                     </h1>
                                     <!-- <div class="flex gap-2 items-center">
                                         <img
@@ -200,6 +215,7 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
                         <div v-for="(value, index) in category.slice(0, 6)" :key="index">
                             <Link :href="route('productByCategory', value.id)">
+
                                 <div
                                     class="bg-white rounded-[1.25rem] p-[.62rem] box_category flex gap-6"
                                 >

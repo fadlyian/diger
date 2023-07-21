@@ -44,7 +44,13 @@
                                         </p>
                                     </div>
                                     <h1 class="my-2 font-semibold text-xl">
-                                        Rp {{ value.price }}
+                                        {{
+                                            new Intl.NumberFormat("id-ID", {
+                                                style: "currency",
+                                                currency: "IDR",
+                                                minimumFractionDigits: 0,
+                                            }).format(value.price)
+                                        }}
                                     </h1>
                                     <!-- <div class="flex gap-2 items-center">
                                         <img

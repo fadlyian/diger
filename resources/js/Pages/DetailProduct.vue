@@ -46,7 +46,13 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <p class="text-3xl font-semibold">
-                                Rp{{ product.price }}
+                                {{
+                                    new Intl.NumberFormat("id-ID", {
+                                        style: "currency",
+                                        currency: "IDR",
+                                        minimumFractionDigits: 0,
+                                    }).format(product.price)
+                                }}
                             </p>
                             <div class="text-center">
                                 <Link
