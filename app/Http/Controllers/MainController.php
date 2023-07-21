@@ -58,9 +58,11 @@ class MainController extends Controller
         ]);
     }
 
-    public function productByCategory(){
+    public function productByCategory($id){
+        $d = Product::where('category_id', $id)->with('user')->get();
+        // dd($d);
         return inertia::render('ProductByCategory', [
-            'products' => Product::with('user')->get(),
+            'products' => $d,
             'categories' => Category::all(),
         ]);
     }

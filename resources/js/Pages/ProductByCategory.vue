@@ -5,9 +5,9 @@
         <template #header>
             <div class="flex gap-5 justify-center items-center">
                 <a
-                    href="#"
+                    :href="route('productByCategory', value.id)"
                     class="font-medium hover:text-primary"
-                    v-for="value in category"
+                    v-for="value in category.slice(0, 6)"
                     :key="value.id"
                 >
                     {{ value.name }}

@@ -5,7 +5,7 @@
         <template #header>
             <div class="flex gap-5 justify-center items-center">
                 <a
-                    href="#"
+                    :href="route('productByCategory', value.id)"
                     class="font-medium hover:text-primary"
                     v-for="value in category.slice(0, 6)"
                     :key="value.id"
@@ -199,7 +199,7 @@
                     </h1>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
                         <div v-for="(value, index) in category.slice(0, 6)" :key="index">
-                            <Link href="#">
+                            <Link :href="route('productByCategory', value.id)">
                                 <div
                                     class="bg-white rounded-[1.25rem] p-[.62rem] box_category flex gap-6"
                                 >
