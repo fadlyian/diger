@@ -6,7 +6,8 @@
             <h1 class="text-[2rem] font-bold">Categories - add</h1>
         </template>
         <div class="py-12">
-            <form @submit.prevent="submit">
+            <!-- <form @submit.prevent="form.post(route('store.categories'))"> -->
+            <form>
                 <div class="mb-20">
                     <div class="mb-6">
                         <InputLabel
@@ -29,23 +30,24 @@
                     </div>
                     <div class="mb-6">
                         <InputLabel
-                            for="file"
+                            for="image"
                             value="Gambar"
                             isRequired="true"
                         />
 
                         <TextInput
-                            id="file"
+                            id="image"
                             type="file"
                             class="mt-1 hidden w-full"
-                            v-model="form.file"
+                            v-model="form.image"
                             required
                             autocomplete="off"
                             accept="image/*"
                             @change="onFileChange"
+                            @input="form.image = $event.target.files[0]"
                         />
 
-                        <label for="file">
+                        <label for="image">
                             <div
                                 class="border w-full border-primary cursor-pointer focus:border-primary px-6 py-3 focus:ring-primary placeholder:text-gray-400 rounded-full shadow-sm"
                             >
@@ -77,7 +79,7 @@
                         <!-- <InputError class="mt-2" :message="errors.description" /> -->
                     </div>
                 </div>
-                <button
+                <button @click="submit()"
                     type="submit"
                     class="block w-max ml-auto text-white cursor-pointer py-2.5 px-14 rounded-full font-semibold bg-primary hover:shadow-lg"
                 >
@@ -104,7 +106,7 @@ const categories = ref("");
 const form = useForm({
     categories: "",
     description: "",
-    file: null,
+    image: null,
 });
 
 const label = ref("Pilih Gambar");

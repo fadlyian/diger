@@ -31,9 +31,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
+
         // return $request['categories'];
         Category::create([
             "name" => $request['categories'],
+            "description" => $request['description'],
         ]);
         // dd($request);
         return to_route('admin.categories');
