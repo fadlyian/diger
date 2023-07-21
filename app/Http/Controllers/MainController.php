@@ -43,8 +43,10 @@ class MainController extends Controller
     }
 
     public function show($id){
+        $d = Product::find($id)->with('user')->first();
+        // dd($d);
         return Inertia::render('DetailProduct', [
-            'product' => Product::find($id),
+            'product' => Product::find($id)->with('user')->first(),
         ]);
     }
 

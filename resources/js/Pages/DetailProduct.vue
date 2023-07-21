@@ -29,10 +29,10 @@
                                     fill="#FEB20E"
                                 />
                             </svg>
-                            <p>
+                            <!-- <p>
                                 {{ product.rating }} | Terjual
                                 {{ product.sold }}
-                            </p>
+                            </p> -->
                         </div>
                         <div class="flex gap-3 items-center mb-20">
                             <img
@@ -41,7 +41,7 @@
                                 alt=""
                             />
                             <p class="text-2xl font-semibold">
-                                {{ product.seller }}
+                                {{ product.user.name }}
                             </p>
                         </div>
                         <div class="flex justify-between items-center">
