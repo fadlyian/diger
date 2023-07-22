@@ -6,28 +6,18 @@
             <div class="pt-24 px-12">
                 <div class="grid grid-cols-5 gap-10">
                     <div class="col-span-2 flex">
-                        <img
-                            :src="'/assets/' + product.image"
-                            class="w-full h-auto object-cover rounded-3xl"
-                            alt=""
-                        />
+                        <img :src="'../storage/' + product.image
+                            " class="w-full h-auto object-cover rounded-3xl" alt="" />
                     </div>
                     <div class="col-span-3">
                         <h1 class="font-semibold text-3xl mb-[.62rem]">
                             {{ product.name }}
                         </h1>
                         <div class="flex gap-2 items-center mb-7">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="17"
-                                height="16"
-                                viewBox="0 0 17 16"
-                                fill="none"
-                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
                                 <path
                                     d="M8.5 0L10.4084 5.87336L16.584 5.87336L11.5878 9.50329L13.4962 15.3766L8.5 11.7467L3.50383 15.3766L5.41219 9.50329L0.416019 5.87336L6.59163 5.87336L8.5 0Z"
-                                    fill="#FEB20E"
-                                />
+                                    fill="#FEB20E" />
                             </svg>
                             <!-- <p>
                                 {{ product.rating }} | Terjual
@@ -35,11 +25,7 @@
                             </p> -->
                         </div>
                         <div class="flex gap-3 items-center mb-20">
-                            <img
-                                src="/assets/product.png"
-                                class="h-10 w-10 object-cover rounded-full"
-                                alt=""
-                            />
+                            <img src="/assets/product.png" class="h-10 w-10 object-cover rounded-full" alt="" />
                             <p class="text-2xl font-semibold">
                                 {{ product.user.name }}
                             </p>
@@ -55,11 +41,9 @@
                                 }}
                             </p>
                             <div class="text-center">
-                                <Link
-                                    :href="route('addToCart', product.id)"
-                                    class="block cursor-pointer mx-auto bg-primary w-max text-white py-2.5 px-14 border border-primary rounded-full font-semibold hover:shadow-lg"
-                                    >+ Keranjang</Link
-                                >
+                                <Link :href="route('addToCart', product.id)"
+                                    class="block cursor-pointer mx-auto bg-primary w-max text-white py-2.5 px-14 border border-primary rounded-full font-semibold hover:shadow-lg">
+                                + Keranjang</Link>
                             </div>
                         </div>
                     </div>
@@ -71,10 +55,7 @@
                         <h1 class="text-2xl font-medium mb-[.62rem]">
                             Deskripsi Produk
                         </h1>
-                        <div
-                            class="contents"
-                            v-html="product.description"
-                        ></div>
+                        <div class="contents" v-html="product.description"></div>
                     </div>
                     <div class="col-span-2">
                         <h1 class="text-2xl font-medium mb-[.62rem]">
@@ -89,7 +70,7 @@
                                         produk fisik.
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td
                                         class="flex justify-between items-center"
                                     >
@@ -98,31 +79,34 @@
                                         </p>
                                         <p>{{ product.level }}</p>
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
-                                    <td
-                                        class="flex justify-between items-center"
-                                    >
+                                    <td class="flex justify-between items-center">
                                         <p class="font-medium">Tipe produk</p>
                                         <p>{{ product.type }}</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td
-                                        class="flex justify-between items-center"
-                                    >
+                                    <td class="flex justify-between items-center">
                                         <p class="font-medium">Ukuran</p>
-                                        <p>{{ product.sizeFile }}</p>
+                                        <p>
+                                            {{
+                                                (
+                                                    product.sizeFile / 1000
+                                                ).toFixed(2)
+                                            }}
+                                            KB
+                                        </p>
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td
                                         class="flex justify-between items-center"
                                     >
                                         <p class="font-medium">Panjang</p>
                                         <p>{{ product.pages }} pages</p>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </table>
                         </div>
                     </div>
@@ -192,6 +176,7 @@ table {
     width: 100%;
     overflow: hidden;
 }
+
 .border_table {
     border-radius: 0.625rem;
     border: 1px solid #9b9b9b;

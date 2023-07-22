@@ -5,9 +5,11 @@
         <div class="pt-[14%] sm:pt-[12%] md:pt-[12%] lg:pt-[6%] mx-auto">
             <div class="container">
                 <!-- banner -->
-                <section class="text-center md:w-1/2 mx-auto my-[4rem] md:mb-[6rem] md:mt-[2rem]">
+                <section
+                    class="text-center md:w-1/2 mx-auto my-[4rem] md:mb-[6rem] md:mt-[2rem]"
+                >
                     <p class="text-[2rem] font-bold">Pricing</p>
-                    <h1 class="text-5xl font-bold text-primary my-5">
+                    <h1 class="text-5xl font-bold text-primary lg:my-5 my-4">
                         10% rata
                     </h1>
                     <p class="font-medium">
@@ -21,7 +23,7 @@
 
                 <!-- faq -->
                 <div class="mb-[1.62rem]">
-                    <h1 class="text-[2rem] font-bold mb-5">
+                    <h1 class="lg:text-[2rem] text-2xl font-bold mb-5">
                         Pertanyaan yang sering diajukan
                     </h1>
                     <p class="font-medium">
@@ -43,7 +45,7 @@
                             <h1 class="font-bold">
                                 {{ collapsed[key] ? "+" : "-" }}
                             </h1>
-                            <h1 class="font-bold text-2xl">
+                            <h1 class="font-bold text-lg xl:text-2xl">
                                 {{ value.question }}
                             </h1>
                         </div>
@@ -59,7 +61,7 @@
                 <section class="my-[4rem] md:my-[6.25rem]">
                     <div class="box_slogan py-12">
                         <h1
-                            class="text-center text-white text-[2rem] font-semibold w-4/5 mx-auto"
+                            class="text-center text-white text-2xl xl:text-[2rem] font-semibold xl:w-4/5 mx-auto"
                         >
                             Bagikan produk digital Anda. <br />
                             Seseorang di luar sana membutuhkannya.

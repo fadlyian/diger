@@ -31,10 +31,37 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request['categories'];
+
+        // dd($request->file('image'));
+        // dd($request->hasFile('image'));
+        // $request->validate([
+        //     'categories' => '',
+        //     'description' => '',
+        //     'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
+        // ]);
+
+        $image_path = '';
+
+        if ($request->hasFile('image')) {
+            $image_path = $request->file('image')->store('image', 'public');
+        }
         Category::create([
             "name" => $request['categories'],
+            "description" => $request['description'],
+            "image" =>  $image_path,
         ]);
+
+        // $category = new Category();
+        // $category->name = $request->categories;
+        // $category->description = $request->description;
+
+            // Upload gambar
+        // if ($request->hasFile('image')) {
+        //     $imagePath = $request->file('image')->store('categories', 'public'); // Simpan di folder 'categories' dalam direktori 'public'
+        //     // $category->image = $imagePath;
+
+        // }
+
         // dd($request);
         return to_route('admin.categories');
     }
@@ -66,8 +93,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $d = Category::findOrFail($id)->delete();
+
+        return to_route('admin.categories');
     }
 }

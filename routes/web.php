@@ -54,7 +54,10 @@ Route::middleware('auth')->group(function () {
 
     // dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/myProduct', [DashboardController::class, 'myProduct'])->name('myProduct');
+        // product
+        Route::get('/myProduct', [DashboardController::class, 'myProduct'])->name('myProduct');
+        Route::resource('/product', ProductController::class);
+
     Route::get('/pustaka', [DashboardController::class, 'pustaka'])->name('pustaka');
     Route::get('/pengaturan', [DashboardController::class, 'pengaturan'])->name('pengaturan');
 
@@ -62,13 +65,16 @@ Route::middleware('auth')->group(function () {
     // ADMIN
     Route::group(['prefix' => 'admin', 'middleware' => 'roles:admin'], function(){
         route::get('/', [AdminController::class, 'index'])->name('admin.beranda');
+        //user
         route::get('/user', [AdminController::class, 'users'])->name('admin.users');
+        Route::delete('/user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
         route::get('/pengaturan', [DashboardController::class, 'pengaturan'])->name('admin.pengaturan');
 
         //CATEGORIES
         route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
         route::get('/categories/create', [CategoryController::class, 'create'])->name('create.categories');
         Route::post('/categories', [CategoryController::class, 'store'])->name('store.categories');
+        Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('destroy.categories');
     });
 });
 
