@@ -5,6 +5,8 @@ import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, useForm, usePage } from "@inertiajs/vue3";
 import { ref, computed, onMounted } from "vue";
+import { Inertia } from "@inertiajs/inertia";
+
 
 const { props } = usePage();
 const data = ref({
@@ -88,6 +90,12 @@ const triggerFileInput = () => {
 const triggerImageInput = () => {
     if (imageInput.value) {
         imageInput.value.click();
+    }
+};
+
+const destroy = (id) => {
+    if (confirm("Hapus dari Category?")) {
+        Inertia.delete(route("product.destroy", id));
     }
 };
 
@@ -223,7 +231,10 @@ onMounted(() => {
                                             fill="#2E3A59"
                                         />
                                     </svg>
-                                    <svg
+                                    <button
+                                    @click="destroy(produk.id)">
+                                        <svg
+
                                         class="cursor-pointer"
                                         width="18"
                                         height="20"
@@ -236,6 +247,8 @@ onMounted(() => {
                                             fill="#2E3A59"
                                         />
                                     </svg>
+                                    </button>
+
                                 </div>
                             </div>
                         </div>
