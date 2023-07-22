@@ -79,7 +79,7 @@
                                             <div class="box p-3">
                                                 <img
                                                     :src="
-                                                        'assets/' + value.image
+                                                        'storage/' + value.image
                                                     "
                                                     class="w-full h-56 rounded-2xl object-cover"
                                                     alt=""
@@ -156,7 +156,7 @@
                             <div class="box w-full p-3">
                                 <Link :href="route('product.detail', value.id)">
                                     <img
-                                        :src="'assets/' + value.image"
+                                        :src="'storage/' + value.image"
                                         class="w-full h-56 rounded-2xl object-cover"
                                         alt=""
                                     />
