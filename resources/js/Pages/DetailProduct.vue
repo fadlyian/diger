@@ -89,7 +89,14 @@
                                 <tr>
                                     <td class="flex justify-between items-center">
                                         <p class="font-medium">Ukuran</p>
-                                        <p>{{ product.sizeFile }}</p>
+                                        <p>
+                                            {{
+                                                (
+                                                    product.sizeFile / 1000
+                                                ).toFixed(2)
+                                            }}
+                                            KB
+                                        </p>
                                     </td>
                                 </tr>
                                 <!-- <tr>

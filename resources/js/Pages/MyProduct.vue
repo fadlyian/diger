@@ -101,14 +101,14 @@ const destroy = (id) => {
 
 const submit = () => {
     console.log("form kesubmit");
-    form.post(route('product.store'),{
-        onSuccess:() => {
-            console.log('berhasil');
+    form.post(route("product.store"), {
+        onSuccess: () => {
+            console.log("berhasil");
             showForm.value = true;
         },
         onError: () => {
-            console.log('gagal');
-        }
+            console.log("gagal");
+        },
     });
 };
 
@@ -206,7 +206,8 @@ onMounted(() => {
                             <div
                                 class="px-5 py-4 col-span-2 text-sm font-medium"
                             >
-                                {{ produk.sizeFile }}
+                                {{ (produk.sizeFile / 1000).toFixed(2) }}
+                                KB
                             </div>
                             <div
                                 class="px-5 py-4 col-span-2 text-sm font-medium"
@@ -287,7 +288,6 @@ onMounted(() => {
                             type="text"
                             class="mt-1 block w-full"
                             v-model="form.name"
-
                             autofocus
                             autocomplete="off"
                         />
@@ -305,7 +305,6 @@ onMounted(() => {
                             id="category"
                             class="mt-1 block w-full border border-gray-400 focus:border-primary focus:ring-primary placeholder:text-gray-400 rounded-full px-6 py-3 shadow-sm"
                             v-model="form.category"
-
                             autocomplete="off"
                         >
                             <option value="" disabled selected>
@@ -359,7 +358,6 @@ onMounted(() => {
                             type="text"
                             class="mt-1 block w-full border border-gray-400 focus:border-primary focus:ring-primary placeholder:text-gray-400 rounded-[30px] px-6 py-3 shadow-sm"
                             v-model="form.description"
-
                             autocomplete="off"
                         />
 
@@ -382,7 +380,6 @@ onMounted(() => {
                             type="number"
                             class="mt-1 block w-full"
                             v-model="form.price"
-
                             autocomplete="off"
                         />
 
@@ -406,7 +403,6 @@ onMounted(() => {
                                 class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                                 @change="onFileChange"
                                 accept="image"
-
                             />
                             <span
                                 v-if="!form.productFile"
