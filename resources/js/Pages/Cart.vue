@@ -35,7 +35,7 @@
                             class="py-3 pl-3 pr-7 flex gap-2.5 rounded-3xl shadow-md"
                         >
                             <img
-                                :src="'/assets/' + product.product.image"
+                                :src="'storage/' + product.product.image"
                                 class="w-60 h-auto object-cover rounded-3xl"
                                 alt=""
                             />
