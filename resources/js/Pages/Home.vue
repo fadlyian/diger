@@ -12,7 +12,9 @@
                             class="md:hidden w-[200px] object-cover mx-auto my-8"
                             alt=""
                         />
-                        <h1 class="font-semibold text-5xl leading-[3.875rem]">
+                        <h1
+                            class="font-semibold text-4xl xl:text-5xl leading-[3rem] xl:leading-[3.875rem]"
+                        >
                             Rasakan masa depan digital dengan berinovasi.
                         </h1>
                         <p class="mb-10 mt-8 md:mb-12 md:mt-14">
@@ -79,10 +81,12 @@
                 <!-- product by category -->
                 <section class="mb-[6.25rem]">
                     <div class="text-center mb-[1.875rem]">
-                        <h1 class="font-semibold text-[2rem] mx-auto mb-4">
+                        <h1
+                            class="font-semibold text-2xl xl:text-[2rem] mx-auto mb-4"
+                        >
                             Mencari inspirasi tentang apa yang bisa Anda jual?
                         </h1>
-                        <p class="font-medium text-2xl">
+                        <p class="font-medium text-xl xl:text-2xl">
                             Temukan produk dan kreator terlaris di Diger
                         </p>
                     </div>
@@ -138,7 +142,7 @@
                 <section class="my-[6.25rem]">
                     <div class="box_slogan py-12">
                         <h1
-                            class="text-center text-white text-[2rem] font-semibold w-4/5 mx-auto"
+                            class="text-center text-white text-2xl xl:text-[2rem] font-semibold md:w-4/5 mx-auto"
                         >
                             Bagikan produk digital Anda. <br />
                             Seseorang di luar sana membutuhkannya.
