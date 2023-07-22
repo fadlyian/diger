@@ -36,19 +36,33 @@ class ProductController extends Controller
     {
         // dd($request);
 
-        // return $request['categories'];
+
+        $image_path = '';
+        $file_path = '';
+        $file_type='';
+        $file_size='';
+
+        // dd($request->file('productFile')->getSize());
+        // return $request['image'];
+        if($request->hasFile('productImage')) {
+            $image_path = $request->file('productImage')->store('image', 'public');
+        };
+
+        if($request->hasFile('productFile')){
+            $file_path = $request->file('productFile')->store('file', 'public');
+            $file_type = $request->file('productFile')->getClientOriginalExtension();
+            $file_size = $request->file('productFile')->getSize();
+        };
         Product::create([
             "user_id" => Auth::user()->id,
             "category_id" => $request['category'],
             "name" => $request['name'],
-            "image" => $request['productImage'],
-            "file" => $request['productFile'],
+            "image" => $image_path,
+            "file" => $file_path,
             "price" => $request['price'],
-            "type" => NULL ,
-            "sizeFile" => NULL ,
+            "type" => $file_type ,
+            "sizeFile" => $file_size,
             "description" => $request['description']
-
-
         ]);
         // dd($request);
         return to_route('myProduct');

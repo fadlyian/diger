@@ -93,7 +93,15 @@ const triggerImageInput = () => {
 
 const submit = () => {
     console.log("form kesubmit");
-    form.post(route('product.store'));
+    form.post(route('product.store'),{
+        onSuccess:() => {
+            console.log('berhasil');
+            showForm.value = true;
+        },
+        onError: () => {
+            console.log('gagal');
+        }
+    });
 };
 
 const formatRupiah = (number) => {
