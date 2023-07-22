@@ -306,7 +306,6 @@ onMounted(() => {
                                 class="bg-white text-gray-700 hover:bg-primaryx"
                             >
                                 {{ categories.name }}
-                                {{ categories.id }}
                             </option>
                             <div
                                 class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
