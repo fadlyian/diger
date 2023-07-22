@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,10 +15,12 @@ class DashboardController extends Controller
     }
 
     public function myProduct(){
-        $data = Product::where('user_id', Auth::user()->id)->get();
+        $product = Product::where('user_id', Auth::user()->id)->get();
+        $categories = Category::all();
 
         return Inertia::render('MyProduct', [
-            'products' => $data,
+            'products' => $product,
+            'categories' => $categories,
         ]);
     }
 
