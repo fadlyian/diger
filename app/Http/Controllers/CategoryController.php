@@ -31,13 +31,24 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
 
-        // return $request['categories'];
-        Category::create([
-            "name" => $request['categories'],
-            "description" => $request['description'],
+        // return $request->hasFile('image');
+        $request->validate([
+            'categories' => '',
+            'description' => '',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
         ]);
+
+        $category = new Category();
+        $category->name = $request->categories;
+        $category->description = $request->description;
+
+            // Upload gambar
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('categories', 'public'); // Simpan di folder 'categories' dalam direktori 'public'
+            $category->image = $imagePath;
+        }
+
         // dd($request);
         return to_route('admin.categories');
     }
