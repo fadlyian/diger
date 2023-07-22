@@ -3,7 +3,9 @@
 
     <CustomerLayout>
         <template #header>
-            <div class="flex gap-5 justify-center items-center">
+            <div
+                class="flex gap-5 justify-center flex-nowrap overflow-x-scroll w-full whitespace-nowrap no-scrollbar items-center"
+            >
                 <a
                     :href="route('productByCategory', value.id)"
                     class="font-medium hover:text-primary"
@@ -15,7 +17,7 @@
             </div>
         </template>
 
-        <div class="pt-[14%] sm:pt-[12%] md:pt-[12%] lg:pt-24 m-auto">
+        <div class="pt-24 sm:pt-[12%] md:pt-[12%] lg:pt-24 m-auto">
             <div class="container">
                 <!-- Banner -->
                 <div id="banner">
@@ -48,7 +50,9 @@
                         <div
                             class="box_orange py-7 px-8 flex flex-col justify-between my-2 col-span-1 overflow-hidden"
                         >
-                            <h1 class="text-4xl text-white font-bold">
+                            <h1
+                                class="text-3xl xl:text-4xl text-white font-bold"
+                            >
                                 Trend Digital Product
                             </h1>
                             <img
@@ -145,7 +149,9 @@
 
                 <!-- innovative product -->
                 <section id="innovative">
-                    <h1 class="text-3xl font-bold mb-5">Produk Inovatif</h1>
+                    <h1 class="text-2xl xl:text-3xl font-bold mb-5">
+                        Produk Inovatif
+                    </h1>
                     <div
                         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
                     >
@@ -209,13 +215,15 @@
 
                 <!-- product by category -->
                 <section id="category">
-                    <h1 class="text-3xl font-bold mb-5">
+                    <h1 class="text-2xl xl:text-3xl font-bold mb-5">
                         Produk Berdasarkan Kategori
                     </h1>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                        <div v-for="(value, index) in category.slice(0, 6)" :key="index">
+                        <div
+                            v-for="(value, index) in category.slice(0, 6)"
+                            :key="index"
+                        >
                             <Link :href="route('productByCategory', value.id)">
-
                                 <div
                                     class="bg-white rounded-[1.25rem] p-[.62rem] box_category flex gap-6"
                                 >
@@ -297,8 +305,26 @@ const settings = ref({
     wrapAround: true,
     autoplay: 5000,
 });
+
+const breakpoints = ref({
+    // 576px and up
+    576: {
+        itemsToShow: 2,
+        wrapAround: false,
+    },
+    // 768px and up
+    768: {
+        itemsToShow: 2.5,
+        wrapAround: false,
+    },
+    // 1024 and up
+    1024: {
+        itemsToShow: 3,
+        wrapAround: false,
+    },
+});
 const settings_product = ref({
-    itemsToShow: 3.8,
+    itemsToShow: 1,
     wrapAround: true,
     snapAlign: "start",
     mouseDrag: true,
@@ -312,6 +338,9 @@ const category = ref(props.categories);
 <style scoped>
 .container {
     max-width: 1180px;
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
 }
 .banner_image {
     margin: 1.8rem 0 0;
