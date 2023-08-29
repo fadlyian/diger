@@ -76,7 +76,7 @@ $ npm install
 # Build the frontend assets for production using the following command
 $ npm run build
 
-# Develop or run a MigleFood project in development mode
+# Develop or run a Diger project in development mode
 $ npm run dev
 
 # Start the development server
